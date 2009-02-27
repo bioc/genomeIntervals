@@ -1,0 +1,48 @@
+* have an operating mode so that the default behavior for every function is to return objects with some specified closure.
+like options( genomeIntervals.closure = c(TRUE, TRUE) ).
+
+* have relative distance to be able to treat 5' and 3' orientation.
+which.nearest (directional)
+
+* have a "universe" optional argument for complement and setdiff 
+
+* implement setdiff
+
+* make strand having three levels +, - , 0 (0 for both + and -). This corresponds to natural entities such as chromosomes, promoters, etc that are double stranded.
+It corresponds to entries in GFF with "." in strand column (which in fact is not to be interpreted as a missing value, ) 
+
+
+
+### bioconductor check list
+
+ask them for biocViews suggestion. Used DataImport as nothing was really matching.
+
+x	all tests on recent R-devel
+x	R CMD build genomeIntervals
+x	size of the build < 2Mb
+x	R CMD check genomeIntervals takes less than 5 min. and gives no error and no warning
+
+x	Contains a Sweave style vignette that demonstrates how to use the package to accomplish a task (more on this below).
+x	Includes examples in the man pages.
+x	Specifies one or more biocViews categories.
+x	Contains a NAMESPACE file to define the functions, classes, methods that should be exported for users.
+x	Uses only the newer .db style annotation packages. For example, don't depend on 'hgu95av2', instead use 'hgu95av2.db' etc.
+x	Contains (literature) references to the methods used as well as to other similar or related packages.
+x	Documents data structures used and, if different than the data structures used by similar packages, explains why a different data structure was used.
+x	Works with (i.e. uses and define methods for) ExpressionSet and AnnotatedDataFrame objects for the appropriate kinds of data. Please no longer use the exprSet and phenoData classes, which have been deprecated in favor of ExpressionSet and AnnotatedDataFrame, respectively. (See the original announcement on the Bioc-devel mailing list.)
+x	Contains only code that can be redistributed according to the package license. In particular, packages may not include any code from Numerical Recipes.
+
+x	If you are using S4 classes or methods, add a 'Collate' field to your package's DESCRIPTION file. Generally, class definitions come first, generics second, methods third, and then everything else. For the files in the 'R' source code directory of your package, we recommend the following structure/layout:
+o	All class definitions in R/AllClasses.R
+o	All generic function definitions in R/AllGenerics.R
+o	Methods are defined in a file named by the generic function. For example, all show methods would go in R/show-methods.R. This is not written in stone, but tends to provide a useful organization. Sometimes a collection of methods that provide the interface to a class are best put in a someClass-accessors.R file.
+
+x	Depends - packages whose objects are visible to the end-user. These packages are typically used in the examples section of the man pages.
+x	Imports - packages whose objects are hidden from the end-user. These packages contain functions that are used by your packages functions.
+x	Suggests - packages that are used to create the vignette or contains optional functionality that is regulated by require statements.
+x	Anyone using more than 5 dependencies in their package should expect to give some very good justifications for this.
+
+x	All Bioconductor packages should use an x.y.z version scheme. The following rules apply:
+	The y number should be odd for packages in devel and even for packages in release.
+	We encourage package maintainers to increment z whenever committing changes to a package in devel.
+	Any change committed to a released package, no matter how small, must bump z.

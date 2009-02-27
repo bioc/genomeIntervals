@@ -1,0 +1,27 @@
+Package: genomeIntervals
+Version: 0.9.6
+Date: 2009-01-15
+Type: Package
+Title: Operations on genomic intervals
+Author: Julien Gagneur <gagneur@embl.de>, Richard Bourgon
+Maintainer: Julien Gagneur <gagneur@embl.de>
+Depends: R (>= 2.8.0), intervals (>= 0.10.3), Biobase, methods
+Suggests: 
+Description:
+  Tools for operation on genomic intervals.
+License: Artistic-2.0
+Collate: 	Genome_intervals-class.R
+			show-methods.R
+			size-methods.R
+			c.R
+			core_annotated.R
+			distance_to_nearest-methods.R
+			interval_complement-methods.R
+			interval_overlap-methods.R
+			interval_intersection-methods.R
+			interval_union-methods.R
+			parseGffAttributes.R
+			readGff3.R
+biocViews: DataImport, Infrastructure, Genetics
+LazyLoad: yes
+

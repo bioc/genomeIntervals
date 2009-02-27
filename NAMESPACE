@@ -1,0 +1,56 @@
+importClassesFrom( intervals, Intervals_virtual, Intervals_full) 
+
+importMethodsFrom( intervals, 
+					 "[",
+              "close_intervals",
+              "closed", "closed<-",
+              "coerce",
+              "empty",
+              "head",
+              "initialize",
+              "close_intervals",
+              "open_intervals",
+          	  "interval_union",
+              "interval_complement",
+              "interval_intersection",
+              "interval_overlap",
+              "distance_to_nearest",
+              "show",
+              "size",
+              "tail",
+              "type", "type<-")
+              
+importFrom( Biobase, "annotation", "annotation<-") 
+
+S3method( c, Genome_intervals )
+S3method( c, Genome_intervals_stranded )
+
+exportClasses(
+              "Genome_intervals",
+              "Genome_intervals_stranded"
+              )
+
+exportMethods(
+              "annotation", "annotation<-",
+              "seq_name", "seq_name<-",
+              "strand", "strand<-",
+              "inter_base", "inter_base<-",
+              "type<-",
+              "[",
+              "[[",
+              "$",
+              "coerce",
+              "size",
+              "show",
+              "core_annotated",
+              "interval_union",
+              "interval_complement",
+              "interval_intersection",
+              "interval_overlap",
+              "distance_to_nearest"
+              )
+export(
+		"readGff3",
+		"parseGffAttributes",
+		"getGffAttribute"
+	)

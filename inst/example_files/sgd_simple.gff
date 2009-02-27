@@ -1,0 +1,38 @@
+##gff-version 3
+#date Tue Sep 23 19:23:09 2008
+#
+# Saccharomyces cerevisiae S288C genome
+# simplified version for producing an example file for the 
+# R package genomeIntervals
+# see SGD for original file (below)
+#
+# Features from the 16 nuclear chromosomes labeled chrI to chrXVI,
+# plus the mitochondrial genome labeled chrMito and the 2-micron plasmid.
+#
+# Created by Saccharomyces Genome Database (http://www.yeastgenome.org/)
+#
+# Weekly updates of this file are available via Anonymous FTP from:
+# ftp://ftp.yeastgenome.org/yeast/data_download/chromosomal_feature/saccharomyces_cerevisiae.gff
+#
+#
+#
+chrI	SGD	chromosome	1	230208	.	.	.	ID=chrI;dbxref=NCBI:NC_001133
+chrI	SGD	repeat_region	1	62	.	-	.	ID=TEL01L-TR;Name=TEL01L-TR;dbxref=SGD:S000028864
+chrI	SGD	telomere	1	801	.	-	.	ID=TEL01L;Name=TEL01L;dbxref=SGD:S000028862
+chrI	SGD	repeat_region	63	336	.	-	.	ID=TEL01L-XR;Name=TEL01L-XR;dbxref=SGD:S000028866
+chrI	SGD	gene	335	649	.	+	.	ID=YAL069W;Name=YAL069W;Ontology_term=GO:0008150,GO:0003674,GO:0005575;dbxref=SGD:S000002143;orf_classification=Dubious
+chrI	SGD	CDS	335	649	.	+	0	Parent=YAL069W;Name=YAL069W;Ontology_term=GO:0008150,GO:0003674,GO:0005575;dbxref=SGD:S000002143;orf_classification=Dubious
+chrI	SGD	repeat_region	337	801	.	-	.	ID=TEL01L-XC;Name=TEL01L-XC;dbxref=SGD:S000028865
+chrI	SGD	nucleotide_match	753	763	.	-	.	Parent=TEL01L-XC;Name=TEL01L-XC;dbxref=SGD:S000028865
+chrI	SGD	binding_site	532	544	.	-	.	Parent=TEL01L-XC;Name=TEL01L-XC;dbxref=SGD:S000028865
+chrI	SGD	gene	538	792	.	+	.	ID=YAL068W-A;Name=YAL068W-A;Ontology_term=GO:0003674,GO:0005575,GO:0008150;orf_classification=Dubious
+chrI	SGD	CDS	538	792	.	+	0	Parent=YAL068W-A;Name=YAL068W-A;Ontology_term=GO:0003674,GO:0005575,GO:0008150;orf_classification=Dubious
+chrII	SGD	chromosome	1	813178	.	.	.	ID=chrII;dbxref=NCBI:NC_001134
+chrII	SGD	repeat_region	1	5848	.	-	.	ID=TEL02L-YP;Name=TEL02L-YP;dbxref=SGD:S000028870
+chrII	SGD	nucleotide_match	81	91	.	+	.	Parent=TEL02L-YP;Name=TEL02L-YP;dbxref=SGD:S000028870
+chrII	SGD	repeat_region	1479	2414	.	+	.	Parent=TEL02L-YP;Name=TEL02L-YP;dbxref=SGD:S000028870
+chrII	SGD	telomere	1	6608	.	-	.	ID=TEL02L;Name=TEL02L;dbxref=SGD:S000028867
+chrII	SGD	gene	280	2658	.	-	.	ID=YBL113C;Name=YBL113C;Ontology_term=GO:0008150,GO:0005575,GO:0004386;dbxref=SGD:S000002153;orf_classification=Uncharacterized
+chrII	SGD	CDS	280	2658	.	-	0	Parent=YBL113C;Name=YBL113C;Ontology_term=GO:0008150,GO:0005575,GO:0004386;dbxref=SGD:S000002153;orf_classification=Uncharacterized
+chrII	SGD	gene	646	1128	.	+	.	ID=YBL113W-A;Name=YBL113W-A;Ontology_term=GO:0008150,GO:0003674,GO:0005575;orf_classification=Dubious
+chrII	SGD	CDS	646	1128	.	+	0	Parent=YBL113W-A;Name=YBL113W-A;Ontology_term=GO:0008150,GO:0003674,GO:0005575;orf_classification=Dubious
