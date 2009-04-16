@@ -1,5 +1,5 @@
 Package: genomeIntervals
-Version: 0.9.6
+Version: 0.99.0
 Date: 2009-01-15
 Type: Package
 Title: Operations on genomic intervals
@@ -24,4 +24,3 @@ Collate: 	Genome_intervals-class.R
 			readGff3.R
 biocViews: DataImport, Infrastructure, Genetics
 LazyLoad: yes
-
