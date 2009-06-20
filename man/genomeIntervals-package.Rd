@@ -36,7 +36,7 @@ Tools for operation on genomic intervals.
 		\item{\code{\link{gen_ints}}}{Genome Intervals examples}
 		\item{\code{\link{getGffAttribute}}}{Pull one or more key/value pairs from gffAttributes strings}
 		
-		\item{\code{\link[=interval_overlap,Genome_intervals,Genome_intervals-method]{interval_overlap}}}{Assess which query intervals overlap which targets}
+		\item{\code{\link[=interval_overlap,Genome_intervals,Genome_intervals-method]{interval_overlap}}}{Assess overlap from one set of genomic intervals to another}
 		
 		\item{\code{\link[=interval_complement,Genome_intervals-method]{interval_complement}}}{Compute the complement of a set of genomic intervals}
     	

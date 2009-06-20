@@ -36,7 +36,7 @@ Class \code{"\linkS4class{vector}"}, by class "Genome\_intervals", distance 7, w
     \item{distance\_to\_nearest}{\code{signature(from = "Genome_intervals_stranded", to = "Genome_intervals_stranded")}: ... }
     \item{interval\_complement}{\code{signature(x = "Genome_intervals_stranded")}: ... }
     \item{interval\_intersection}{\code{signature(x = "Genome_intervals_stranded")}: ... }
-    \item{interval\_overlap}{\code{signature(query = "Genome_intervals_stranded", target = "Genome_intervals_stranded")}: ... }
+    \item{interval\_overlap}{\code{signature(to = "Genome_intervals_stranded", from = "Genome_intervals_stranded")}: ... }
     \item{interval\_union}{\code{signature(x = "Genome_intervals_stranded")}: ... }
     \item{strand}{\code{signature(x = "Genome_intervals_stranded")}: ... }
     \item{strand<-}{\code{signature(x = "Genome_intervals_stranded")}: ... }
