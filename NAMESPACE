@@ -1,4 +1,4 @@
-importClassesFrom( intervals, Intervals_virtual, Intervals_full) 
+importClassesFrom( intervals, Intervals_virtual, Intervals_virtual_or_numeric, Intervals_full) 
 
 importMethodsFrom( intervals, 
 					 "[",
