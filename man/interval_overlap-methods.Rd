@@ -3,21 +3,23 @@
 \alias{interval_overlap}
 \alias{interval_overlap,Genome_intervals,Genome_intervals-method}
 \alias{interval_overlap,Genome_intervals_stranded,Genome_intervals_stranded-method}
+\alias{interval_overlap,missing,ANY-method}
+\alias{interval_overlap,ANY,missing-method}
 
-\title{Assess which query intervals overlap which targets}
+\title{Assess overlap from one set of genomic intervals to another}
 
 \description{
-  Given two objects, a target and a query, assess which query intervals
-  overlap which targets.
+  Given two objects, a 'from' and a 'to', assess which intervals in 'to'
+  overlap which of 'from'.
 }
 
 \usage{
 \S4method{interval_overlap}{Genome_intervals,Genome_intervals}(
-                 target, query,
+                 from, to,
                  check_valid = TRUE
                  )
 \S4method{interval_overlap}{Genome_intervals_stranded,Genome_intervals_stranded}(
-                 target, query,
+                 from, to,
                  check_valid = TRUE
                  )
 
@@ -25,11 +27,11 @@
 
 \arguments{
   
-  \item{target}{
+  \item{from}{
     A \code{Genome_intervals} or \code{Genome_intervals_stranded} object.
     } 
 
-  \item{query}{A \code{Genome_intervals} or \code{Genome_intervals_stranded} object.}
+  \item{to}{A \code{Genome_intervals} or \code{Genome_intervals_stranded} object.}
 
   
   \item{check\_valid}{
@@ -40,14 +42,14 @@
 }
 
 \details{
-  A wrapper calling \code{\link[intervals:interval_overlap-methods]{intervals:interval_overlap}} by \code{seq_name} and by \code{strand} (if both \code{query} and \code{target} are \code{"Genome_intervals_stranded"} objects).
+  A wrapper calling \code{\link[intervals:interval_overlap-methods]{intervals:interval_overlap}} by \code{seq_name} and by \code{strand} (if both \code{to} and \code{from} are \code{"Genome_intervals_stranded"} objects).
 }
 
 \value{
-  A list, with one element for each row of \code{target}. The elements
-  are vectors of indices, indicating which \code{query} rows overlap
-  each target. A list element of length 0 indicates a target with no
-  overlapping query intervals.
+  A list, with one element for each row of \code{from}. The elements
+  are vectors of indices, indicating which \code{to} rows overlap
+  each from. A list element of length 0 indicates a from with no
+  overlapping to intervals.
 }
 
 

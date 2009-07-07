@@ -27,27 +27,27 @@ setMethod(
         "interval_overlap",
         signature( "Genome_intervals", "Genome_intervals" ),
         function(
-                target,
-                query,
+                from,
+                to,
                 check_valid = TRUE
         ){
-            if ( check_valid && !( validObject(query) && validObject(target) ) )
-                stop( "The 'query' and/or 'target' Genome_intervals are invalid." )
+            if ( check_valid && !( validObject(to) && validObject(from) ) )
+                stop( "The 'to' and/or 'from' Genome_intervals are invalid." )
             
             ## result value, initiated as empty list
-            rv = vector( mode="list", length=nrow(target) )
+            rv = vector( mode="list", length=nrow(from) )
             
             ## adapt interval representation (basically moves to R with appropriate changes for inter_base)
-            qints <- intervalsForOverlap( query )
-            tints <- intervalsForOverlap( target)
+            qints <- intervalsForOverlap( to )
+            tints <- intervalsForOverlap( from)
             
             ## all unique seq_names
-            seqlev = unique( c( levels(seq_name(query)), levels(seq_name(target)) ) )
+            seqlev = unique( c( levels(seq_name(to)), levels(seq_name(from)) ) )
             
             ## loop over seq_names and call next method 
             for(s in seqlev){
-                qi = which( seq_name(query) == s)
-                ti = seq_name(target) == s
+                qi = which( seq_name(to) == s)
+                ti = seq_name(from) == s
                 
                 rv[ti] = lapply(
                         interval_overlap(tints[ti], qints[qi], check_valid=check_valid),
@@ -64,29 +64,50 @@ setMethod(
         "interval_overlap",
         signature( "Genome_intervals_stranded", "Genome_intervals_stranded" ),
         function(
-                target,
-                query,
+                from,
+                to,
                 check_valid = TRUE
         ){
-            if ( check_valid && !( validObject(query) && validObject(target) ) )
-                stop( "The 'query' and/or 'target' Genome_intervals are invalid." )
+            if ( check_valid && !( validObject(to) && validObject(from) ) )
+                stop( "The 'to' and/or 'from' Genome_intervals are invalid." )
             
-            if( any( is.na(strand(query)) ) || any( is.na(strand(target)) ) )
-                stop("NA(s) present in the strand of 'query' or 'target'.")
+            if( any( is.na(strand(to)) ) || any( is.na(strand(from)) ) )
+                stop("NA(s) present in the strand of 'to' or 'from'.")
             ## result value, initiated as empty list
-            rv = vector( mode="list", length=nrow(target) )
-            strdlev = levels( strand(target) )
+            rv = vector( mode="list", length=nrow(from) )
+            strdlev = levels( strand(from) )
             ## loop over strands and call next method
             nextMethod = getMethod("interval_overlap", signature( "Genome_intervals",  "Genome_intervals" ) )
             for(s in strdlev){
-                qi = which(strand(query) == s)
-                ti = strand(target) == s
+                qi = which(strand(to) == s)
+                ti = strand(from) == s
                 
                 rv[ti] =  lapply(
-                        nextMethod( target[ti], query[qi] ),
+                        nextMethod( from[ti], to[qi] ),
                         function(v) qi[v]
                 )
             }
             return(rv)
         }
 )
+
+
+argument_error <- paste(
+        "The 'from' and 'to' arguments are required. Note that the",
+        "  interval_overlap argument names changed at v. 1.1.1.",
+        "  See documentation.",
+        sep = "\n"
+)                       
+
+setMethod(
+        "interval_overlap",
+        signature( from = "missing", to = "ANY" ),
+        function( from, to, check_valid, ... ) stop( argument_error )
+)
+
+setMethod(
+        "interval_overlap",
+        signature( from = "ANY", to = "missing" ),
+        function( from, to, check_valid, ... ) stop( argument_error )
+)
+

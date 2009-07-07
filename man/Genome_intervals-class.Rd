@@ -78,7 +78,7 @@ Class \code{"\linkS4class{vector}"}, by class "Intervals\_full", distance 6, wit
     \item{inter\_base<-}{\code{signature(x = "Genome_intervals")}: ... }
     \item{interval\_complement}{\code{signature(x = "Genome_intervals")}: ... }
     \item{interval\_intersection}{\code{signature(x = "Genome_intervals")}: ... }
-    \item{interval\_overlap}{\code{signature(query = "Genome_intervals", target = "Genome_intervals")}: ... }
+    \item{interval\_overlap}{\code{signature(from = "Genome_intervals", to = "Genome_intervals")}: ... }
     \item{interval\_union}{\code{signature(x = "Genome_intervals")}: ... }
     \item{seq\_name}{\code{signature(x = "Genome_intervals")}: ... }
     \item{seq\_name<-}{\code{signature(x = "Genome_intervals")}: ... }

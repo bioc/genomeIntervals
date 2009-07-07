@@ -4,7 +4,7 @@
 
 \title{The \emph{genomeIntervals} package}
 \author{Julien Gagneur}
-\date{14 January 2008}
+\date{20 June 2009}
 
 % The is for R CMD check, which finds it in spite of the "%", and also for
 % automatic creation of links in the HTML documentation for the package:
@@ -130,18 +130,31 @@ We define the \emph{size} of a genomic interval to be the number of bases it con
 size(i)
 @
 
+Constructing a \texttt{Genome\_intervals} or a \texttt{Genome\_intervals\_stranded} from scratch is done by a call to \texttt{new} providing the matrix of end points, the matrix of closures (or faster a single value as shown below) and the \texttt{annotation} data frame.
+For \texttt{Genome\_intervals\_stranded}, make sure the \texttt{strand} column of the \texttt{annotation} data frame is a factor with two levels.
 
-
+<<new>>=
+new(
+    "Genome_intervals_stranded",
+    matrix(c(1, 2, 2, 5), ncol = 2),
+    closed = TRUE,
+    annotation = data.frame(
+            seq_name = c("chr01","chr02"),
+            inter_base = FALSE,
+            strand = factor( c("+", "+"), levels=c("+", "-") )
+    )
+)
+@
 
 \section{Overlap and set operations}
 
 \subsection{Overlap}
 
-The \texttt{interval\_overlap} method identifies, for each interval of the \texttt{target} object, all overlapping intervals from the \texttt{query} object.
+The \texttt{interval\_overlap} method identifies, for each interval of the \texttt{from} object, all overlapping intervals from the \texttt{to} object.
 It works by \texttt{seq\_name} and (if applicable) \texttt{strand}.  
 
 <<intervalOverlap>>=
-interval_overlap( target=i, query=j )
+interval_overlap( from=i, to=j )
 @
 
 
@@ -242,15 +255,15 @@ To demonstrate these functions, the package \emph{genomeIntervals} comes with a 
 <<loadgff>>=
 libPath <- installed.packages()["genomeIntervals", "LibPath"]
 filePath <- file.path(
-                      libPath,
-                      "genomeIntervals",
-                      "example_files"
-                      )
+        libPath,
+        "genomeIntervals",
+        "example_files"
+)
 
 gff <- readGff3( 
-                file.path( filePath, "sgd_simple.gff" ), 
-                isRightOpen=FALSE 
-                )
+        file.path( filePath, "sgd_simple.gff" ), 
+        isRightOpen=FALSE 
+)
 idpa = getGffAttribute( gff, c( "ID", "Parent" ) )
 head(idpa)
 @
