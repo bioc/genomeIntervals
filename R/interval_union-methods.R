@@ -4,7 +4,7 @@
 setMethod(
         "interval_union",
         signature( "Genome_intervals" ),
-        function( x, ..., check_valid = TRUE ) {
+        function( x, ... ) {
             
             args <- c( list(x), list(...) )
             
@@ -14,14 +14,12 @@ setMethod(
             ## combines all passed object into a single one
             x_comb <- do.call( c, core)
             
-            if ( check_valid ) validObject( x_comb )
-            
             ## then split by sequence and inter_base and call next method
             s = split(	x_comb, list( inter_base(x_comb), seq_name(x_comb) ), drop=FALSE )
             
             fac.comb = expand.grid( levels(as.factor(inter_base(x_comb))), levels(seq_name(x_comb)) )
             
-            interv.list = lapply( s , function(y) interval_union( as(y,"Intervals_full"), check_valid=check_valid ) )
+            interv.list = lapply( s , function(y) interval_union( as(y,"Intervals_full") ) )
             nrows  = sapply(interv.list,nrow)
             
             interv = do.call(c, interv.list)
@@ -45,7 +43,7 @@ setMethod(
 setMethod (
         "interval_union",
         signature( "Genome_intervals_stranded" ),
-        function( x, ..., check_valid = TRUE ) {
+        function( x, ... ) {
             
             args <- c( list(x), list(...) )
             
@@ -64,11 +62,10 @@ setMethod (
             
             ## combines all passed object into a single one
             x_comb <- do.call( c, core)
-            if ( check_valid ) validObject( x_comb )
             
             ## then split by strand and call next method
             s = split(x_comb, strand(x_comb), drop=TRUE )
-            gi.list = lapply( s , function(y) interval_union( as(y,"Genome_intervals"), check_valid=check_valid ) )
+            gi.list = lapply( s , function(y) interval_union( as(y,"Genome_intervals") ) )
             gi = do.call(c, gi.list)
             new(
                     "Genome_intervals_stranded",
