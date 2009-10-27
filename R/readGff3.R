@@ -39,7 +39,7 @@ readGff3 <- function( file, isRightOpen = TRUE ) {
     
     gffdf <- data.frame( gff, stringsAsFactors = FALSE )
     
-    # in case where isRightOpen == TRUE then the convention for zero_lengt features
+    # in case where isRightOpen == TRUE then the convention for zero_length features
     # can be trusted. In this case, set inter_base flag for all intervals for which first==end
     # otherwise, just consider all intervals as 'base' intervals. 
     if(isRightOpen){
@@ -59,6 +59,14 @@ readGff3 <- function( file, isRightOpen = TRUE ) {
             closed = matrix( rep(c(TRUE, !isRightOpen), each=n), ncol =2),
             annotation = gffdf[c("seq_name", "strand", "inter_base", "source", "type", "score", "phase", "gffAttributes" )]
     )
+    
+    
+    val = validObject(rv, test=TRUE) 
+    if( val!=TRUE ){
+        warning("The Genome_intervals_stranded object could be constructed from the GFF3 file. However, it is not valid according to validObject(). Check whether the GFF3 file contains invalid entries.")
+        warning("validObject() failure: ", val)
+    }
+    
     return(rv)
     
 }

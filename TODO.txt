@@ -11,11 +11,9 @@ which.nearest (directional)
 * make strand having three levels +, - , 0 (0 for both + and -). This corresponds to natural entities such as chromosomes, promoters, etc that are double stranded.
 It corresponds to entries in GFF with "." in strand column (which in fact is not to be interpreted as a missing value, ) 
 
-
+* implement subset 
 
 ### bioconductor check list
-
-ask them for biocViews suggestion. Used DataImport as nothing was really matching.
 
 x	all tests on recent R-devel
 x	R CMD build genomeIntervals

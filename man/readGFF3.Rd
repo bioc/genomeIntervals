@@ -29,6 +29,8 @@ readGff3(file, isRightOpen=TRUE)
   When the GFF file follows the right-open interval convention (\code{isRightOpen} is \code{TRUE}), then
   GFF entries for which end base equals first base are recognized as zero-length features
   and loaded as \code{inter_base} intervals.
+  It can be that readGff3 is able to construct a \code{\link[=Genome_intervals_stranded-class]{Genome_intervals_stranded}} object from the input file, although not valid.
+A warning message is then generated and the constructed object is returned to allow inspection of it.
 }
 
 \value{
