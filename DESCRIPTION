@@ -1,11 +1,12 @@
 Package: genomeIntervals
-Version: 1.7.0
-Date: 2009-10-27
+Version: 1.7.1
+Date: 2010-10-27
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@embl.de>, Richard Bourgon
 Maintainer: Julien Gagneur <gagneur@embl.de>
-Depends: R (>= 2.8.0), intervals (>= 0.12.2), Biobase, methods
+Depends: R (>= 2.8.0), intervals (>= 0.12.2), methods
+Imports: Biobase
 Suggests: 
 Description:
   Tools for operation on genomic intervals.

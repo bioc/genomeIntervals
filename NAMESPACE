@@ -18,9 +18,7 @@ importMethodsFrom( intervals,
               "show",
               "size",
               "tail",
-              "type", "type<-")
-              
-importFrom( Biobase, "annotation", "annotation<-") 
+              "type", "type<-")            
 
 S3method( c, Genome_intervals )
 S3method( c, Genome_intervals_stranded )

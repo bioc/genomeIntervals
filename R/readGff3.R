@@ -34,9 +34,19 @@ readGff3 <- function( file, isRightOpen = TRUE ) {
             )
     )
     
-    for ( col in c( "seq_name", "source", "type", "strand" ) )
+    for ( col in c( "seq_name", "source", "type" ) )
         gff[[ col ]] <- as.factor( gff[[ col ]] )
+	
+	## ? can be used for non-available strands
+	gff$strand[ gff$strand =="?"] <- NA
+	
+	## every available strand should be + or -
+	if( !all( gff$strand %in% c(NA, "+", "-") ) )
+		stop("Incorrect GFF file. Some entries have a strand different than '+', '-', '?' or '.'")
     
+	## we can now force strand to be a factor with levels +, -
+	gff$strand <- factor(gff$strand, levels=c("+", "-"))
+	
     gffdf <- data.frame( gff, stringsAsFactors = FALSE )
     
     # in case where isRightOpen == TRUE then the convention for zero_length features
