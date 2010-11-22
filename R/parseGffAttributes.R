@@ -1,11 +1,12 @@
 extract <- function(pattern, string, perl = TRUE) {
     
     # Retrieve match in first parentheses pair. This function should not be exported.
-    
-    r <- paste(".*", pattern, ".*", sep = "")
+    # The part (^|;) ensures that any key is at the beginning of after a ';'
+	
+    r <- paste(".*(^|;)", pattern, ".*", sep = "")
     matched <- grep( r, string, perl = perl )
     result <- rep( NA, length(string) )
-    result[ matched ] <- sub( r, "\\1", string[matched], perl = perl )
+    result[ matched ] <- sub( r, "\\2", string[matched], perl = perl )
     return( result )
     
 }
