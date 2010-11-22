@@ -1,6 +1,6 @@
 Package: genomeIntervals
-Version: 1.7.1
-Date: 2010-10-27
+Version: 1.7.2
+Date: 2010-11-22
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@embl.de>, Richard Bourgon
