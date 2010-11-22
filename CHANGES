@@ -1,0 +1,6 @@
+Ver. 1.7.2:
+	regular expression in the extract method (called by parseGffAttributes()) fixed to make sure any key is at the beginning of after a ';' 
+
+Ver. 1.7.1:
+	The package does not "Depends" on Biobase but only "Imports" it. 
+	readGff3 deals with Gff having only "+" strand entries (bug report from Nicolas Servant) as well as "?" strand entries
