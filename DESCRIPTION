@@ -1,15 +1,19 @@
 Package: genomeIntervals
-Version: 1.7.2
-Date: 2010-11-22
+Version: 1.7.3
+Date: 2010-02-09
 Type: Package
 Title: Operations on genomic intervals
-Author: Julien Gagneur <gagneur@embl.de>, Richard Bourgon
+Author: Julien Gagneur <gagneur@embl.de>, Joern Toedling, Richard Bourgon
 Maintainer: Julien Gagneur <gagneur@embl.de>
 Depends: R (>= 2.8.0), intervals (>= 0.12.2), methods
 Imports: Biobase
 Suggests: 
 Description:
-  Tools for operation on genomic intervals.
+  This package defines classes for representing genomic intervals
+  and provides functions and methods for working with these.
+
+  Note: The package provides the basic infrastructure for and is
+  enhanced by the package 'girafe'.
 License: Artistic-2.0
 Collate: 	Genome_intervals-class.R
 			show-methods.R

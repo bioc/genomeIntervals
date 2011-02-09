@@ -1,3 +1,9 @@
+Changes in version 1.7.3:
+
+   o Added a new user-friendly constructor function 'GenomeIntervals' 
+     for constructing both 'Genome_intervals' and
+     'Genome_intervals_stranded' objects
+
 Ver. 1.7.2:
 	regular expression in the extract method (called by parseGffAttributes()) fixed to make sure any key is at the beginning of after a ';' 
 

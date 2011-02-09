@@ -132,5 +132,13 @@ print(i)
 
 # size (number of bases per interval)
 size(i)
+
+
+# simpler way to construct a Genome_intervals object:
+G <- GenomeIntervals(start=c(1,3,4,5,8,10), end=c(5,5,6,8,9,11),
+                     chromosome=rep(c("chr2","chrX","chr1"), each=2),
+                     leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
+show(G)
+
 }
 \keyword{classes}

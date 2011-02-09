@@ -86,6 +86,13 @@ size(j)
 
 ## close intervals left and right (canonical representation)
 close_intervals(j)
-}
 
+
+## simpler way to construct a Genome_intervals_stranded object
+GS <- GenomeIntervals(start=c(1,3,4,5,8,10), end=c(5,5,6,8,9,11),
+                      chromosome=rep(c("chr2","chrX","chr1"), each=2),
+                      strand=c("-","-","+","+","+","+") )
+show(GS)
+
+}
 \keyword{classes}

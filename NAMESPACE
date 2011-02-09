@@ -50,5 +50,6 @@ exportMethods(
 export(
 		"readGff3",
 		"parseGffAttributes",
-		"getGffAttribute"
+		"getGffAttribute",
+                "GenomeIntervals"
 	)
