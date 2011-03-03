@@ -28,6 +28,7 @@
 \alias{seq_name<-,Genome_intervals-method}
 \alias{size,Genome_intervals-method}
 \alias{show,Genome_intervals-method}
+\alias{sort,Genome_intervals-method}
 \alias{type<-,Genome_intervals-method}
 
 \title{Class "Genome\_intervals" }
@@ -134,11 +135,14 @@ print(i)
 size(i)
 
 
-# simpler way to construct a Genome_intervals object:
+## simpler way to construct a Genome_intervals object:
 G <- GenomeIntervals(start=c(1,3,4,5,8,10), end=c(5,5,6,8,9,11),
                      chromosome=rep(c("chr2","chrX","chr1"), each=2),
                      leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
 show(G)
+
+## sort intervals:
+sort(G)
 
 }
 \keyword{classes}

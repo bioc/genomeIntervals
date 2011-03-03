@@ -1,12 +1,12 @@
 Package: genomeIntervals
-Version: 1.7.3
-Date: 2010-02-09
+Version: 1.7.4
+Date: 2010-03-03
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@embl.de>, Joern Toedling, Richard Bourgon
 Maintainer: Julien Gagneur <gagneur@embl.de>
-Depends: R (>= 2.8.0), intervals (>= 0.12.2), methods
-Imports: Biobase
+Depends: R (>= 2.8.0), methods, intervals (>= 0.12.2)
+Imports: methods, Biobase
 Suggests: 
 Description:
   This package defines classes for representing genomic intervals

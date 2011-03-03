@@ -1,3 +1,7 @@
+Changes in version 1.7.4:
+
+   o Added a 'sort' method for 'Genome_intervals' objects
+
 Changes in version 1.7.3:
 
    o Added a new user-friendly constructor function 'GenomeIntervals' 
