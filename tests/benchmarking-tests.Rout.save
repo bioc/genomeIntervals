@@ -1,7 +1,8 @@
 
-R version 2.9.0 Under development (unstable) (2008-12-17 r47235)
-Copyright (C) 2008 The R Foundation for Statistical Computing
+R version 2.12.1 (2010-12-16)
+Copyright (C) 2010 The R Foundation for Statistical Computing
 ISBN 3-900051-07-0
+Platform: x86_64-apple-darwin9.8.0/x86_64 (64-bit)
 
 R is free software and comes with ABSOLUTELY NO WARRANTY.
 You are welcome to redistribute it under certain conditions.
@@ -20,7 +21,7 @@ Type 'q()' to quit R.
 > # benchmarking tests
 > # 
 > # on modifications, regenerate .Rout.save with:
-> # R --vanilla <./genomeIntervals/tests/benchmarking-tests.R >& ./genomeIntervals/tests/benchmarking-tests.Rout.save
+> # R --vanilla <./benchmarking-tests.R >& ./benchmarking-tests.Rout.save
 > # and use svn' diff to check for differences
 > #
 > # Author: julien.gagneur
@@ -28,15 +29,7 @@ Type 'q()' to quit R.
 > 
 > library(genomeIntervals)
 Loading required package: intervals
-Loading required package: Biobase
-
-Welcome to Bioconductor
-
-  Vignettes contain introductory material. To view, type
-  'openVignette()'. To cite Bioconductor, see
-  'citation("Biobase")' and for packages 'citation(pkgname)'.
-
-> 
+> source("fullShow.R")
 > options(warn = -1)
 > 
 > #---------------
@@ -155,7 +148,7 @@ integer(0)
 > # set operations
 > cat("interval_union\n")
 interval_union
-> print( close_intervals( interval_union(i) ) )		# x
+> fullShow( close_intervals( interval_union(i) ) )		# x
 Object of class Genome_intervals_stranded
 4 base intervals and 0 inter-base intervals(*):
 chr01 + [1, 4] 
@@ -168,7 +161,7 @@ annotation:
 2    chr02      FALSE      +
 3    chr03      FALSE      +
 4    chr02      FALSE      -
-> print( close_intervals( interval_union(i,k) ) )		# x
+> fullShow( close_intervals( interval_union(i,k) ) )		# x
 Object of class Genome_intervals_stranded
 6 base intervals and 2 inter-base intervals(*):
 chr01 + [1, 4] 
@@ -189,7 +182,7 @@ annotation:
 6    chr01      FALSE      -
 7    chr02      FALSE      -
 8    chr02       TRUE      -
-> print( close_intervals( interval_union(i0,k0) ) )	# x
+> fullShow( close_intervals( interval_union(i0,k0) ) )	# x
 Object of class Genome_intervals
 3 base intervals and 2 inter-base intervals(*):
 chr01 [1, 10] 
@@ -204,7 +197,7 @@ annotation:
 3      FALSE    chr02
 4       TRUE    chr02
 5      FALSE    chr03
-> print( close_intervals( interval_union(e) ) )		# x
+> fullShow( close_intervals( interval_union(e) ) )		# x
 Object of class Genome_intervals_stranded
 0 base intervals and 0 inter-base intervals(*):
 
@@ -216,7 +209,7 @@ annotation:
 > 
 > cat("interval_intersection\n")
 interval_intersection
-> print( close_intervals( interval_intersection(i,j) ) ) # x
+> fullShow( close_intervals( interval_intersection(i,j) ) ) # x
 Object of class Genome_intervals_stranded
 3 base intervals and 0 inter-base intervals(*):
 chr01 + [1, 1] 
@@ -227,14 +220,14 @@ annotation:
 1      FALSE    chr01      +
 2      FALSE    chr02      -
 3      FALSE    chr02      +
-> print( close_intervals( interval_intersection(i,k) ) ) # x
+> fullShow( close_intervals( interval_intersection(i,k) ) ) # x
 Object of class Genome_intervals_stranded
 1 base interval and 0 inter-base intervals(*):
 chr02 + [12, 12] 
 annotation:
   inter_base seq_name strand
 1      FALSE    chr02      +
-> print( close_intervals( interval_intersection(i,e) ) ) # x
+> fullShow( close_intervals( interval_intersection(i,e) ) ) # x
 Object of class Genome_intervals_stranded
 0 base intervals and 0 inter-base intervals(*):
 
@@ -246,7 +239,7 @@ annotation:
 > 
 > cat("interval_complement\n")
 interval_complement
-> print( close_intervals( interval_complement(j) ) )	# x
+> fullShow( close_intervals( interval_complement(j) ) )	# x
 Object of class Genome_intervals_stranded
 9 base intervals and 0 inter-base intervals(*):
 chr01 + [-Inf, 0] 
@@ -269,7 +262,7 @@ annotation:
 7    chr01      FALSE      -
 8    chr02      FALSE      -
 9    chr02      FALSE      -
-> print( close_intervals( interval_complement(j0) ) )	# x
+> fullShow( close_intervals( interval_complement(j0) ) )	# x
 Object of class Genome_intervals
 6 base intervals and 0 inter-base intervals(*):
 chr01 [-Inf, 0] 
@@ -286,7 +279,7 @@ annotation:
 4      FALSE    chr02
 5      FALSE    chr02
 6      FALSE    chr02
-> print( close_intervals( interval_complement(k) ) ) # x
+> fullShow( close_intervals( interval_complement(k) ) ) # x
 Object of class Genome_intervals_stranded
 7 base intervals and 6 inter-base intervals(*):
 chr01 + [-Inf, 5] 
@@ -317,7 +310,7 @@ annotation:
 11    chr02      FALSE      -
 12    chr02       TRUE      -
 13    chr02       TRUE      -
-> print( close_intervals( interval_complement(e) ) ) # x
+> fullShow( close_intervals( interval_complement(e) ) ) # x
 Object of class Genome_intervals_stranded
 4 base intervals and 2 inter-base intervals(*):
 chr01 + [-Inf, Inf] 

@@ -1,14 +1,14 @@
 # benchmarking tests
 # 
 # on modifications, regenerate .Rout.save with:
-# R --vanilla <./genomeIntervals/tests/benchmarking-tests.R >& ./genomeIntervals/tests/benchmarking-tests.Rout.save
+# R --vanilla <./benchmarking-tests.R >& ./benchmarking-tests.Rout.save
 # and use svn' diff to check for differences
 #
 # Author: julien.gagneur
 ###############################################################################
 
 library(genomeIntervals)
-
+source("fullShow.R")
 options(warn = -1)
 
 #---------------
@@ -52,22 +52,22 @@ cat("\n")
 
 # set operations
 cat("interval_union\n")
-print( close_intervals( interval_union(i) ) )		# x
-print( close_intervals( interval_union(i,k) ) )		# x
-print( close_intervals( interval_union(i0,k0) ) )	# x
-print( close_intervals( interval_union(e) ) )		# x
+fullShow( close_intervals( interval_union(i) ) )		# x
+fullShow( close_intervals( interval_union(i,k) ) )		# x
+fullShow( close_intervals( interval_union(i0,k0) ) )	# x
+fullShow( close_intervals( interval_union(e) ) )		# x
 cat("\n")
 
 cat("interval_intersection\n")
-print( close_intervals( interval_intersection(i,j) ) ) # x
-print( close_intervals( interval_intersection(i,k) ) ) # x
-print( close_intervals( interval_intersection(i,e) ) ) # x
+fullShow( close_intervals( interval_intersection(i,j) ) ) # x
+fullShow( close_intervals( interval_intersection(i,k) ) ) # x
+fullShow( close_intervals( interval_intersection(i,e) ) ) # x
 cat("\n")
 
 cat("interval_complement\n")
-print( close_intervals( interval_complement(j) ) )	# x
-print( close_intervals( interval_complement(j0) ) )	# x
-print( close_intervals( interval_complement(k) ) ) # x
-print( close_intervals( interval_complement(e) ) ) # x
+fullShow( close_intervals( interval_complement(j) ) )	# x
+fullShow( close_intervals( interval_complement(j0) ) )	# x
+fullShow( close_intervals( interval_complement(k) ) ) # x
+fullShow( close_intervals( interval_complement(e) ) ) # x
 cat("\n")
 
