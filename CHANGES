@@ -1,3 +1,6 @@
+Ver. 1.7.6:
+	removed the sort function which is not specified and documented enough  
+
 Ver. 1.7.5:
 	show only show the 1st 4 rows and the last 4 rows of a genomeIntervals
 	

@@ -339,19 +339,19 @@ GenomeIntervals <- function(chromosome, start, end, strand=NULL,
   return(obj)
 }# GenomeIntervals
 
-### sort method for Genome_intervals objects:
-setMethod("sort", signature(x="Genome_intervals"),
-          function(x, decreasing=FALSE, ...) {
-            chr <- gsub("^[Cc]hr", "",
-                        as.character(seq_name(x)))
-            ## replace some chromosome names by numbers for sorting:
-            chr <- gsub("X$","100", chr)
-            chr <- gsub("Y$","200", chr)
-            chr <- gsub("MT?$","300", chr)
-            chr <- gsub("_random$","000", chr)
-            suppressWarnings(chr <- as.numeric(chr))
-            ## are there still non-numeric entries left in chr?
-            if (any(is.na(chr))) chr <- as.character(seq_name(x))
-            ord <- order(chr, x[,1], x[,2], decreasing=decreasing)
-            return(x[ord])
-} ) # sort
+#### sort method for Genome_intervals objects:
+#setMethod("sort", signature(x="Genome_intervals"),
+#          function(x, decreasing=FALSE, ...) {
+#            chr <- gsub("^[Cc]hr", "",
+#                        as.character(seq_name(x)))
+#            ## replace some chromosome names by numbers for sorting:
+#            chr <- gsub("X$","100", chr)
+#            chr <- gsub("Y$","200", chr)
+#            chr <- gsub("MT?$","300", chr)
+#            chr <- gsub("_random$","000", chr)
+#            suppressWarnings(chr <- as.numeric(chr))
+#            ## are there still non-numeric entries left in chr?
+#            if (any(is.na(chr))) chr <- as.character(seq_name(x))
+#            ord <- order(chr, x[,1], x[,2], decreasing=decreasing)
+#            return(x[ord])
+#} ) # sort
