@@ -122,7 +122,7 @@ setReplaceMethod(
 
 #### strand
 
-setGeneric( "strand", function(x) standardGeneric( "strand" ) )
+## setGeneric( "strand", function(x) standardGeneric( "strand" ) )
 
 setMethod(
 		"strand",
@@ -130,7 +130,7 @@ setMethod(
 		function( x ) x@annotation$strand
 )
 
-setGeneric( "strand<-", function( x, value ) standardGeneric( "strand<-" ) )
+## setGeneric( "strand<-", function( x, value ) standardGeneric( "strand<-" ) )
 
 setReplaceMethod(
 		"strand", "Genome_intervals_stranded",
@@ -286,57 +286,57 @@ setMethod(
 
 ## more user-friendly constructor function:
 GenomeIntervals <- function(chromosome, start, end, strand=NULL,
-                            inter.base=NULL, leftOpen=NULL,
-                            rightOpen=NULL, ...)
+		inter.base=NULL, leftOpen=NULL,
+		rightOpen=NULL, ...)
 {
-  stopifnot(length(chromosome)==length(start),
-            length(chromosome)==length(end))
-  ## any inter-base intervals specified
-  if (is.null(inter.base)){
-    inter.base <- vector("logical", length(chromosome))
-  } else {
-    stopifnot(is.logical(inter.base), length(inter.base)==length(chromosome))
-  }
-  ## by default, all intervals are assumed to be closed,
-  ##  unless specified otherwise:
-  if (!is.null(leftOpen))
-    stopifnot(is.logical(leftOpen), length(leftOpen)==length(chromosome))
-  else
-    leftOpen <- vector("logical", length(chromosome))
- if (!is.null(rightOpen))
-    stopifnot(is.logical(rightOpen), length(rightOpen)==length(chromosome))
-  else
-    rightOpen <- vector("logical", length(chromosome))
-  
-  ## prepare annotation data.frame for object:
-  annoDf <- data.frame("seq_name"=factor(chromosome),
-                       "inter_base"=inter.base)
-  ## additional annotation columns?
-  further.args <- as.list(match.call(expand.dots=FALSE)[["..."]])
-  if (length(further.args)>0){
-    for (i in 1:length(further.args))
-      annoDf[[names(further.args)[i]]] <- eval(further.args[[i]])
-  }
-
-  ## create object depending on whether or not the strand was specified
-  if (!is.null(strand)){
-    ## create object of class "Genome_intervals_stranded"
-    stopifnot(length(strand)==length(chromosome),
-              all(strand %in% c("+", "-")))
-    annoDf$strand <- factor(strand, levels=c("+", "-"))
-    obj <- new("Genome_intervals_stranded",
-               cbind(start, end),
-               closed=cbind(!leftOpen, !rightOpen),
-               annotation=annoDf)
-  } else {
-    ### non-stranded intervals
-    obj <- new("Genome_intervals",
-               cbind(start, end),
-               closed=cbind(!leftOpen, !rightOpen),
-               annotation=annoDf)
-  }
-  stopifnot(validObject(obj))
-  return(obj)
+	stopifnot(length(chromosome)==length(start),
+			length(chromosome)==length(end))
+	## any inter-base intervals specified
+	if (is.null(inter.base)){
+		inter.base <- vector("logical", length(chromosome))
+	} else {
+		stopifnot(is.logical(inter.base), length(inter.base)==length(chromosome))
+	}
+	## by default, all intervals are assumed to be closed,
+	##  unless specified otherwise:
+	if (!is.null(leftOpen))
+		stopifnot(is.logical(leftOpen), length(leftOpen)==length(chromosome))
+	else
+		leftOpen <- vector("logical", length(chromosome))
+	if (!is.null(rightOpen))
+		stopifnot(is.logical(rightOpen), length(rightOpen)==length(chromosome))
+	else
+		rightOpen <- vector("logical", length(chromosome))
+	
+	## prepare annotation data.frame for object:
+	annoDf <- data.frame("seq_name"=factor(chromosome),
+			"inter_base"=inter.base)
+	## additional annotation columns?
+	further.args <- as.list(match.call(expand.dots=FALSE)[["..."]])
+	if (length(further.args)>0){
+		for (i in 1:length(further.args))
+			annoDf[[names(further.args)[i]]] <- eval(further.args[[i]])
+	}
+	
+	## create object depending on whether or not the strand was specified
+	if (!is.null(strand)){
+		## create object of class "Genome_intervals_stranded"
+		stopifnot(length(strand)==length(chromosome),
+				all(strand %in% c("+", "-")))
+		annoDf$strand <- factor(strand, levels=c("+", "-"))
+		obj <- new("Genome_intervals_stranded",
+				cbind(start, end),
+				closed=cbind(!leftOpen, !rightOpen),
+				annotation=annoDf)
+	} else {
+		### non-stranded intervals
+		obj <- new("Genome_intervals",
+				cbind(start, end),
+				closed=cbind(!leftOpen, !rightOpen),
+				annotation=annoDf)
+	}
+	stopifnot(validObject(obj))
+	return(obj)
 }# GenomeIntervals
 
 #### sort method for Genome_intervals objects:

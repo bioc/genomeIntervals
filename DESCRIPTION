@@ -1,11 +1,11 @@
 Package: genomeIntervals
-Version: 1.11.0
-Date: 2011-03-29
+Version: 1.11.1
+Date: 2012-03-06
 Type: Package
 Title: Operations on genomic intervals
-Author: Julien Gagneur <gagneur@embl.de>, Joern Toedling, Richard Bourgon
+Author: Julien Gagneur <gagneur@embl.de>, Joern Toedling, Richard Bourgon, Nicolas Delhomme
 Maintainer: Julien Gagneur <gagneur@embl.de>
-Depends: R (>= 2.8.0), methods, intervals (>= 0.12.2)
+Depends: R (>= 2.15.0), methods, intervals (>= 0.13.3), BiocGenerics (>= 0.1.11)
 Imports: methods, Biobase
 Suggests: 
 Description:

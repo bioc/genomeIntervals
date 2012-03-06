@@ -1,3 +1,6 @@
+Ver 1.11.1:
+	strand and strand<- now from BiocGenerics. Thanks to Nicolas Delhomme.
+	
 Ver. 1.7.6:
 	removed the sort function which is not specified and documented enough  
 

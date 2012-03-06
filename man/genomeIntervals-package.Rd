@@ -16,10 +16,10 @@ Tools for operation on genomic intervals.
 \details{
 	\tabular{ll}{
 	Package: \tab genomeIntervals\cr
-	Version: \tab 0.9.6\cr
-	Date: \tab 2009-01-15\cr
+	Version: \tab 1.11.1\cr
+	Date: \tab 2012-03-06\cr
 	Type: \tab Package\cr
-	Depends: \tab R (>= 2.8.0), intervals (>= 0.10.3), Biobase, methods\cr
+	Depends: \tab R (>= 2.15.0), intervals (>= 0.13.3), BiocGenerics, methods\cr
 	Suggests: \tab \cr
 	License: \tab Artistic 2.0\cr
 	BiocViews: \tab DataImport, Infrastructure, Genetics\cr
@@ -50,7 +50,7 @@ Tools for operation on genomic intervals.
 		}
 }
 \author{
-Julien Gagneur <gagneur@embl.de>, Richard Bourgon.
+Julien Gagneur <gagneur@embl.de>, Richard Bourgon, Joern Toedling, Nicolas Delhomme.
 
 Maintainer: Julien Gagneur <gagneur@embl.de>
 }
