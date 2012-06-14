@@ -20,6 +20,7 @@ importMethodsFrom( intervals,
               "interval_intersection",
               "interval_overlap",
               "distance_to_nearest",
+              "which_nearest",    
               "size",
               "tail",
               "type", "type<-")            
@@ -50,7 +51,8 @@ exportMethods(
               "interval_complement",
               "interval_intersection",
               "interval_overlap",
-              "distance_to_nearest"
+              "distance_to_nearest",
+              "which_nearest"
               )
 export(
 		"readGff3",

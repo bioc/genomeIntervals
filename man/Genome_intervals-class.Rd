@@ -29,6 +29,7 @@
 \alias{size,Genome_intervals-method}
 \alias{show,Genome_intervals-method}
 \alias{type<-,Genome_intervals-method}
+\alias{which_nearest,Genome_intervals,Genome_intervals-method}
 
 \title{Class "Genome\_intervals" }
 
