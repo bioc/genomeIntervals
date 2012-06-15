@@ -17,7 +17,6 @@
 \alias{seq_name}
 \alias{seq_name<-}
 
-
 \alias{coerce,Genome_intervals,Intervals_full-method}
 \alias{coerce,Genome_intervals,character-method}
 
@@ -28,6 +27,7 @@
 \alias{seq_name<-,Genome_intervals-method}
 \alias{size,Genome_intervals-method}
 \alias{show,Genome_intervals-method}
+\alias{sort,Genome_intervals-method}
 \alias{type<-,Genome_intervals-method}
 \alias{which_nearest,Genome_intervals,Genome_intervals-method}
 
@@ -62,7 +62,7 @@ Class \code{"\linkS4class{structure}"}, by class "Intervals\_full", distance 5.
 Class \code{"\linkS4class{vector}"}, by class "Intervals\_full", distance 6, with explicit coerce.
 }
 \section{Methods}{
-  \describe{
+  \describe{ 
     \item{[}{\code{signature(x = "Genome_intervals")}: ... }
     \item{[[}{\code{signature(x = "Genome_intervals")}: ... }
     \item{[[<-}{\code{signature(x = "Genome_intervals")}: ... }
@@ -84,9 +84,24 @@ Class \code{"\linkS4class{vector}"}, by class "Intervals\_full", distance 6, wit
     \item{seq\_name}{\code{signature(x = "Genome_intervals")}: ... }
     \item{seq\_name<-}{\code{signature(x = "Genome_intervals")}: ... }
     \item{size}{\code{signature(x = "Genome_intervals")}: ... }
+    \item{sort}{Sorts \code{Genome_intervals} objects by
+      chromosome, start and end position. The order of chromosomes
+      is given by their number, if present. Special chromosome names,
+      e.g. 'chrX' or 'chrM', are put last (or first if argument
+      \code{decreasing=TRUE}) in line with common karyotype layouts.
+      Non-numeric chromosome names are sorted by string order.}
     \item{type<-}{\code{signature(x = "Genome_intervals")}: ... }
-	 }
-}
+    \item{which\_nearest}{
+      For each interval in Set1, finds nearest (least distant)
+      interval in Set2. Intervals on different chromsomes are
+      never considered 'near' to each other.
+      The returned value is a \code{data.frame} with the number
+      of rows equal to the number of intervals in Set1. Each row
+      specifies the distance to the nearest interval in Set2 (a
+      0 means that the interval overlaps one or more intervals in Set2),
+      and the indices of near and overlapping intervals in Set2.
+      See \code{\linkS4class{Intervals_full}} for further details.}
+}}
 
 \note{
 A \code{Genome_intervals} is a \code{"\linkS4class{Intervals_full}"} of type Z (i.e. a set of intervals over the integers).
@@ -136,10 +151,13 @@ size(i)
 
 
 ## simpler way to construct a Genome_intervals object:
-G <- GenomeIntervals(start=c(1,3,4,5,8,10), end=c(5,5,6,8,9,11),
+G <- GenomeIntervals(start=c(1,3,4,5,10,8), end=c(5,5,6,8,11,9),
                      chromosome=rep(c("chr2","chrX","chr1"), each=2),
                      leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
 show(G)
+
+## simple sorting:
+show(sort(G))
 
 }
 \keyword{classes}

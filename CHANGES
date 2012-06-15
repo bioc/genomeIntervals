@@ -4,9 +4,6 @@ Ver 1.13.1:
 Ver 1.11.1:
 	strand and strand<- now from BiocGenerics. Thanks to Nicolas Delhomme.
 	
-Ver. 1.7.6:
-	removed the sort function which is not specified and documented enough  
-
 Ver. 1.7.5:
 	show only show the 1st 4 rows and the last 4 rows of a genomeIntervals
 	
