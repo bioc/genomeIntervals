@@ -8,8 +8,11 @@
 \alias{$,Genome_intervals-method}
 \alias{$<-,Genome_intervals-method}
 
+
+\alias{annotation}
+\alias{annotation<-}
 \alias{annotation,Genome_intervals-method}
-\alias{annotation<-,Genome_intervals,ANY-method}
+\alias{annotation<-,Genome_intervals-method}
 
 \alias{inter_base}
 \alias{inter_base<-}

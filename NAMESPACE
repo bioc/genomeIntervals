@@ -1,7 +1,7 @@
 
 import(methods)
 
-importFrom(BiocGenerics, strand, "strand<-")
+importFrom(BiocGenerics, annotation, "annotation<-", strand, "strand<-")
 
 importClassesFrom( intervals, Intervals_virtual, Intervals_virtual_or_numeric, Intervals_full) 
 

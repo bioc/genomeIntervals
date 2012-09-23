@@ -1,3 +1,7 @@
+Ver 1.13.4:
+        annotation and annotation<- now from BiocGenerics. Thanks to Nicolas Delhomme.
+        in interval_union use full argument name (levels instead of level)
+
 Ver 1.13.3:
         updated Julien's email address
         

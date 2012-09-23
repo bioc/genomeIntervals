@@ -56,22 +56,21 @@ setClass(
 
 
 #### annotation
-## implements the generics of package "BioBase"
+## implements the generics of BiocGenerics
 setMethod(
-		Biobase::annotation,
-		signature( "Genome_intervals" ),
-		function( object ) object@annotation
-)
-annotation <- Biobase::annotation
+		f="annotation",          
+		signature="Genome_intervals",
+		definition= function(object){
+			object@annotation
+		})
 
-setMethod(
-		Biobase::`annotation<-`, "Genome_intervals",
-		function( object, value ) {
+setReplaceMethod(
+		f="annotation",
+		signature="Genome_intervals",
+		definition=function( object, value ) {
 			object@annotation <- value
 			return(object)
-		}
-)
-`annotation<-` <- Biobase::`annotation<-`
+		})
 
 #### inter_base
 setGeneric( "inter_base", function(x) standardGeneric( "inter_base" ) )
@@ -342,19 +341,19 @@ GenomeIntervals <- function(chromosome, start, end, strand=NULL,
 
 #### sort method for Genome_intervals objects:
 setMethod("sort", signature(x="Genome_intervals"),
-          function(x, decreasing=FALSE, ...) {
-            chr <- gsub("^[Cc]hr", "",
-                        as.character(seq_name(x)))
-            ## replace some chromosome names by numbers for sorting:
-            chr <- gsub("X$","100", chr)
-            chr <- gsub("Y$","200", chr)
-            chr <- gsub("MT?$","300", chr)
-            chr <- gsub("_random$","000", chr)
-            suppressWarnings(chr <- as.numeric(chr))
-            ## are there still non-numeric entries left in chr?
-            if (any(is.na(chr))) chr <- as.character(seq_name(x))
-            ord <- order(chr, x[,1]+ifelse(closed(x)[,1], 0, 0.1),
-                         x[,2]-ifelse(closed(x)[,2], 0, 0.1), # take open intervals into account
-                         decreasing=decreasing)
-            return(x[ord])
-} ) # sort
+		function(x, decreasing=FALSE, ...) {
+			chr <- gsub("^[Cc]hr", "",
+					as.character(seq_name(x)))
+			## replace some chromosome names by numbers for sorting:
+			chr <- gsub("X$","100", chr)
+			chr <- gsub("Y$","200", chr)
+			chr <- gsub("MT?$","300", chr)
+			chr <- gsub("_random$","000", chr)
+			suppressWarnings(chr <- as.numeric(chr))
+			## are there still non-numeric entries left in chr?
+			if (any(is.na(chr))) chr <- as.character(seq_name(x))
+			ord <- order(chr, x[,1]+ifelse(closed(x)[,1], 0, 0.1),
+					x[,2]-ifelse(closed(x)[,2], 0, 0.1), # take open intervals into account
+					decreasing=decreasing)
+			return(x[ord])
+		} ) # sort
