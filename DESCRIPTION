@@ -1,5 +1,5 @@
 Package: genomeIntervals
-Version: 1.13.4
+Version: 1.14.0
 Date: 2012-09-22
 Type: Package
 Title: Operations on genomic intervals
