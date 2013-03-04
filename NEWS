@@ -1,0 +1,85 @@
+CHANGES IN VERSION 1.15.1
+--------------------------
+
+	o Created that NEWS file to replace the
+	CHANGES file and be compliant to the R
+	standard package architecture
+
+NEW FEATURES
+
+    o introduced a coercion to data.frame
+    o introduced a writeGff3 function
+    o reverted the sort behavior to the default R behavior
+    and added a method argument. Setting it to byName results
+    in a more biologically relevant sorting of the object.
+
+CHANGES IN VERSION 1.13.4
+--------------------------
+
+NEW FEATURES
+
+    o annotation and annotation<- now from BiocGenerics. Thanks to Nicolas Delhomme.
+
+BUG FIXES
+    
+    o in interval_union use full argument name (levels instead of level)
+
+CHANGES IN VERSION 1.13.4
+--------------------------
+
+	o updated Julien's email address
+
+
+CHANGES IN VERSION 1.13.4
+--------------------------
+        
+NEW FEATURES
+    
+    o added a 'which_nearest' method for Genome_intervals objects
+
+
+CHANGES IN VERSION 1.11.1
+--------------------------
+
+NEW FEATURES
+
+    o strand and strand<- now from BiocGenerics. Thanks to Nicolas Delhomme.
+
+
+CHANGES IN VERSION 1.7.5
+--------------------------
+	
+NEW FEATURES
+
+    o show only show the 1st 4 rows and the last 4 rows of a genomeIntervals
+
+CHANGES IN VERSION 1.7.4
+--------------------------
+
+NEW FEATURES
+
+   o Added a 'sort' method for 'Genome_intervals' objects
+
+CHANGES IN VERSION 1.7.3
+--------------------------
+
+NEW FEATURES
+
+   o Added a new user-friendly constructor function 'GenomeIntervals' 
+     for constructing both 'Genome_intervals' and
+     'Genome_intervals_stranded' objects
+
+CHANGES IN VERSION 1.7.2
+--------------------------
+
+BUG FIXES
+
+    o regular expression in the extract method (called by parseGffAttributes()) fixed to make sure any key is at the beginning of after a ';' 
+
+CHANGES IN VERSION 1.7.1
+--------------------------
+
+BUG FIXES
+
+    o The package does not "Depends" on Biobase but only "Imports" it. 
+    o readGff3 deals with Gff having only "+" strand entries (bug report from Nicolas Servant) as well as "?" strand entries

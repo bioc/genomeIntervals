@@ -341,19 +341,51 @@ GenomeIntervals <- function(chromosome, start, end, strand=NULL,
 
 #### sort method for Genome_intervals objects:
 setMethod("sort", signature(x="Genome_intervals"),
-		function(x, decreasing=FALSE, ...) {
-			chr <- gsub("^[Cc]hr", "",
-					as.character(seq_name(x)))
-			## replace some chromosome names by numbers for sorting:
-			chr <- gsub("X$","100", chr)
-			chr <- gsub("Y$","200", chr)
-			chr <- gsub("MT?$","300", chr)
-			chr <- gsub("_random$","000", chr)
-			suppressWarnings(chr <- as.numeric(chr))
-			## are there still non-numeric entries left in chr?
-			if (any(is.na(chr))) chr <- as.character(seq_name(x))
-			ord <- order(chr, x[,1]+ifelse(closed(x)[,1], 0, 0.1),
+		function(x, decreasing=FALSE, method=c("default","byName"),...) {
+                  method <- match.arg(method)
+                  return(switch(method,
+                         "default" = {
+                           x[order(seq_name(x))]
+                         },
+                         "byName" = {
+                           chr <- gsub("^[Cc]hr", "",
+                                       as.character(seq_name(x)))
+                           ## replace some chromosome names by numbers for sorting:
+                           chr <- gsub("X$","100", chr)
+                           chr <- gsub("Y$","200", chr)
+                           chr <- gsub("MT?$","300", chr)
+                           chr <- gsub("_random$","000", chr)
+                           suppressWarnings(chr <- as.numeric(chr))
+                           ## are there still non-numeric entries left in chr?
+                           if (any(is.na(chr))) chr <- as.character(seq_name(x))
+                           ord <- order(chr, x[,1]+ifelse(closed(x)[,1], 0, 0.1),
 					x[,2]-ifelse(closed(x)[,2], 0, 0.1), # take open intervals into account
 					decreasing=decreasing)
-			return(x[ord])
+                           x[ord]
+                         }))
 		} ) # sort
+
+## coercion to data.frame
+setAs("Genome_intervals","data.frame",function(from){
+
+  ## change depending on whether we have a gff3 or not
+  gff3 <- ifelse(ncol(annotation(from))==8,
+                 all(colnames(annotation(from)) == c("seq_name", "strand", "inter_base", "source", "type", "score", "phase", "gffAttributes")),
+                 FALSE)
+  
+  ## create the df
+  if(gff3){
+    df <- cbind(annotation(from),from[,1:2])[,c(1,4,5,9,10,6,2,7,8)]
+    names(df) <- c("seqname","source","feature","start","end","score","strand","frame","attribute")
+  } else {
+    df <- cbind(annotation(from),from[,1:2])[,-grep("inter_base",colnames(annotation(from)))]
+  }
+  
+  ## convert factors to characters
+  df[,sapply(df,is.factor)] <- apply(df[,sapply(df,is.factor),drop=FALSE],2,as.character)
+  ## to avoid introducing warnings when replacing NA values by dots
+  df[is.na(df)] <- "."
+  
+  return(df)
+})
+

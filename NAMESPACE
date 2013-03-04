@@ -58,5 +58,6 @@ export(
 		"readGff3",
 		"parseGffAttributes",
 		"getGffAttribute",
-                "GenomeIntervals"
+                "GenomeIntervals",
+       "writeGff3"
 	)

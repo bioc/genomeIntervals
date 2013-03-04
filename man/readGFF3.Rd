@@ -1,23 +1,34 @@
 \name{readGff3}
 \alias{readGff3}
+\alias{writeGff3}
+\alias{writeGff3,data.frame-method}
+\alias{writeGff3,Genome_intervals-method}
 
-\title{Make a Genome\_intervals\_stranded object from a GFF file}
+\title{Read (write) a Genome\_intervals\_stranded object from (to) a GFF3 file}
 
 \description{
-  Make a \code{\link[=Genome_intervals_stranded-class]{Genome_intervals_stranded}} object from a gff file in gff3 format.
+\itemize{
+\item{readGff3}{
+  Make a \code{\link[=Genome_intervals_stranded-class]{Genome_intervals_stranded}} object from a gff file in gff3 format.}
+\item{writeGff3}{
+	Write a \code{\link[=Genome_intervals-class]{Genome_intervals}} object to a gff file in gff3 format.
+}
+}
 }
 
 \usage{
 readGff3(file, isRightOpen=TRUE)
+writeGff3(object,file)
 }
 
 \arguments{
-  \item{file}{ The name of the gff file to read. }
+  \item{file}{ The name of the gff file to read/write. }
   \item{isRightOpen}{
     Although a proper GFF3 file follows the convention of right-open intervals, 
     improper GFF files following the right-closed convention are frequently found.
     Set \code{isRightOpen = FALSE} in this case.
   }
+  \item{object}{a \code{\link[=Genome_intervals-class]{Genome_intervals}} object}
 }
 
 \details{
@@ -64,4 +75,8 @@ head(gff,10)
 
 head(annotation(gff),10)
 
+## write the gff3 file
+\dontrun{
+writeGff3(gff,file="sgd_simple.gff")
+}
 }
