@@ -31,7 +31,6 @@
 \alias{seq_name<-,Genome_intervals-method}
 \alias{size,Genome_intervals-method}
 \alias{show,Genome_intervals-method}
-\alias{sort,Genome_intervals-method}
 \alias{type<-,Genome_intervals-method}
 \alias{which_nearest,Genome_intervals,Genome_intervals-method}
 
@@ -89,15 +88,6 @@ Class \code{"\linkS4class{vector}"}, by class "Intervals\_full", distance 6, wit
     \item{seq\_name}{\code{signature(x = "Genome_intervals")}: ... }
     \item{seq\_name<-}{\code{signature(x = "Genome_intervals")}: ... }
     \item{size}{\code{signature(x = "Genome_intervals")}: ... }
-    \item{sort}{If method is "byName" it sorts \code{Genome_intervals} objects by
-      chromosome, start and end position. The order of chromosomes
-      is given by their number, if present. Special chromosome names,
-      e.g. 'chrX' or 'chrM', are put last (or first if argument
-      \code{decreasing=TRUE}) in line with common karyotype layouts.
-      Non-numeric chromosome names are sorted by string order.
-      The default sorting is the standard R by character chain sorting,
-      i.e. chr10 comes after chr1 and before chr2
-}
     \item{type<-}{\code{signature(x = "Genome_intervals")}: ... }
     \item{which\_nearest}{
       For each interval in Set1, finds nearest (least distant)
@@ -165,18 +155,5 @@ G <- GenomeIntervals(start=c(1,3,4,5,10,8), end=c(5,5,6,8,11,9),
                      chromosome=rep(c("chr2","chrX","chr1"), each=2),
                      leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
 show(G)
-
-## default sorting
-G <- GenomeIntervals(start=c(1,3,4,5,10,8), end=c(5,5,6,8,11,9),
-                     chromosome=rep(c("chr2","chr10","chr1"), each=2),
-                     leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
-sort(G)
-
-## by name sorting
-G <- GenomeIntervals(start=c(1,3,4,5,10,8), end=c(5,5,6,8,11,9),
-                     chromosome=rep(c("chr2","chr10","chr1"), each=2),
-                     leftOpen=rep(c(FALSE, FALSE, TRUE), 2))
-sort(G,method="byName")
-
 }
 \keyword{classes}

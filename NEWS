@@ -1,3 +1,12 @@
+CHANGES IN VERSION 1.15.2
+--------------------------
+	o Depends on intervals >=0.14.0 to fix a change in R's split behavior
+	o sort does not have byName argument any longer
+
+NEW FEATURES
+	o order, sort, rank and xtfrm consistently implemented.
+	
+
 CHANGES IN VERSION 1.15.1
 --------------------------
 
