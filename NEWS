@@ -1,3 +1,7 @@
+CHANGES IN VERSION 1.15.3
+--------------------------
+	o genome intervals order now consisten with assumption that (start == [start-1 and that stop) == stop-1]
+
 CHANGES IN VERSION 1.15.2
 --------------------------
 	o Depends on intervals >=0.14.0 to fix a change in R's split behavior
