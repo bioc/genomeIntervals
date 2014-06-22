@@ -1,12 +1,12 @@
 Package: genomeIntervals
-Version: 1.20.0
-Date: 2013-03-13
+Version: 1.20.1
+Date: 2013-06-21
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@genzentrum.lmu.de>, Joern Toedling, Richard Bourgon, Nicolas Delhomme
 Maintainer: Julien Gagneur <gagneur@genzentrum.lmu.de>
-Depends: R (>= 2.15.0), methods, intervals (>= 0.14.0), BiocGenerics (>= 0.3.2)
-Imports: methods, Biobase
+Depends: R (>= 2.15.0), methods, intervals (>= 0.14.0), BiocGenerics (>= 0.10.0)
+Imports:
 Suggests: 
 Description:
   This package defines classes for representing genomic intervals

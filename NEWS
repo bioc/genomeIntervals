@@ -1,3 +1,11 @@
+CHANGES IN VERSION 1.20.1
+--------------------------
+
+ o Added an argument to the readGff3 function to
+  enable quietness.
+
+  o Corrected some R CMD check warnings
+
 CHANGES IN VERSION 1.15.3
 --------------------------
 	o genome intervals order now consisten with assumption that (start == [start-1 and that stop) == stop-1]

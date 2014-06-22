@@ -1,7 +1,7 @@
 # follows GFF3 specifications as in:
 # http://song.sourceforge.net/gff3.shtml
 
-readGff3 <- function( file, isRightOpen = TRUE ) {
+readGff3 <- function( file, isRightOpen = TRUE, quiet = FALSE ) {
     
     # Find total number of lines before first "##FASTA" line, for use in scan()
     # call that follows. Note that scan() is used for speed, and because nlines
@@ -31,7 +31,8 @@ readGff3 <- function( file, isRightOpen = TRUE ) {
                     strand = character(),
                     phase = integer(),
                     gffAttributes = character()
-            )
+            ),
+            quiet = quiet
     )
     
     for ( col in c( "seq_name", "source", "type" ) )
