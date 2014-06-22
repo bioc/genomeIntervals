@@ -17,7 +17,7 @@
 }
 
 \usage{
-readGff3(file, isRightOpen=TRUE)
+readGff3(file, isRightOpen=TRUE, quiet=FALSE)
 writeGff3(object,file)
 }
 
@@ -26,9 +26,10 @@ writeGff3(object,file)
   \item{isRightOpen}{
     Although a proper GFF3 file follows the convention of right-open intervals, 
     improper GFF files following the right-closed convention are frequently found.
-    Set \code{isRightOpen = FALSE} in this case.
+    Set \code{isRightOpen = FALSE} in this case.    
   }
   \item{object}{a \code{\link[=Genome_intervals-class]{Genome_intervals}} object}
+  \item{quiet}{a boolean to turn verbosity off when reading a Gff3 file}
 }
 
 \details{

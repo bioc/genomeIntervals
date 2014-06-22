@@ -9,10 +9,10 @@ importMethodsFrom( intervals,
 					 "[",
               "close_intervals",
               "closed", "closed<-",
-              "coerce",
+#              "coerce",
               "empty",
               "head",
-              "initialize",
+#              "initialize",
               "close_intervals",
               "open_intervals",
           	  "interval_union",
@@ -57,9 +57,9 @@ exportMethods(
               "which_nearest"
               )
 export(
-		"readGff3",
-		"parseGffAttributes",
-		"getGffAttribute",
-                "GenomeIntervals",
-       "writeGff3"
+    "readGff3",
+    "parseGffAttributes",
+    "getGffAttribute",
+    "GenomeIntervals",
+    "writeGff3"
 	)
