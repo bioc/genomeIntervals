@@ -1,7 +1,7 @@
 ## write Gff3
 setGeneric(name="writeGff3",
            def=function(object,file=character(1)){
-             standardGeneric("writeGff3")             
+             standardGeneric("writeGff3")
            })
 
 setMethod(f="writeGff3",
@@ -31,14 +31,15 @@ setMethod(f="writeGff3",
             }
 
             ## TODO check the type in addition if we really want to enfore gff3...
-              
+
             ## make sure they are in the right order
             object <- object[,match(c("seqname","source","feature","start","end","score","strand","frame","attribute"),colnames(object))]
-            
+
             ## write
-            write("##gff-version 3",file=file)            
-            write.table(object,append=TRUE,quote=FALSE,sep="\t",
+            write("##gff-version 3",file=file)
+            write.table(format(object,scientific = FALSE),
+                        append=TRUE,quote=FALSE,sep="\t",
                         row.names=FALSE,col.names=FALSE,
-                        file=file)            
+                        file=file)
           })
 

@@ -1,3 +1,14 @@
+CHANGES IN VERSION 1.22.1
+--------------------------
+
+  o Fixed an issue in the formatting of the coordinates in the
+  writeGff3 function
+
+CHANGES IN VERSION 1.22.0
+--------------------------
+
+  o Bioc Version 3.0
+
 CHANGES IN VERSION 1.21.1
 --------------------------
 
@@ -13,7 +24,7 @@ CHANGES IN VERSION 1.20.1
 
 CHANGES IN VERSION 1.15.3
 --------------------------
-	
+
   o genome intervals order now consisten with assumption that (start == [start-1 and that stop) == stop-1]
 
 CHANGES IN VERSION 1.15.2
@@ -23,7 +34,7 @@ CHANGES IN VERSION 1.15.2
 
 NEW FEATURES
 	o order, sort, rank and xtfrm consistently implemented.
-	
+
 
 CHANGES IN VERSION 1.15.1
 --------------------------
@@ -48,7 +59,7 @@ NEW FEATURES
     o annotation and annotation<- now from BiocGenerics. Thanks to Nicolas Delhomme.
 
 BUG FIXES
-    
+
     o in interval_union use full argument name (levels instead of level)
 
 CHANGES IN VERSION 1.13.4
@@ -59,9 +70,9 @@ CHANGES IN VERSION 1.13.4
 
 CHANGES IN VERSION 1.13.4
 --------------------------
-        
+
 NEW FEATURES
-    
+
     o added a 'which_nearest' method for Genome_intervals objects
 
 
@@ -75,7 +86,7 @@ NEW FEATURES
 
 CHANGES IN VERSION 1.7.5
 --------------------------
-	
+
 NEW FEATURES
 
     o show only show the 1st 4 rows and the last 4 rows of a genomeIntervals
@@ -92,7 +103,7 @@ CHANGES IN VERSION 1.7.3
 
 NEW FEATURES
 
-   o Added a new user-friendly constructor function 'GenomeIntervals' 
+   o Added a new user-friendly constructor function 'GenomeIntervals'
      for constructing both 'Genome_intervals' and
      'Genome_intervals_stranded' objects
 
@@ -101,12 +112,12 @@ CHANGES IN VERSION 1.7.2
 
 BUG FIXES
 
-    o regular expression in the extract method (called by parseGffAttributes()) fixed to make sure any key is at the beginning of after a ';' 
+    o regular expression in the extract method (called by parseGffAttributes()) fixed to make sure any key is at the beginning of after a ';'
 
 CHANGES IN VERSION 1.7.1
 --------------------------
 
 BUG FIXES
 
-    o The package does not "Depends" on Biobase but only "Imports" it. 
+    o The package does not "Depends" on Biobase but only "Imports" it.
     o readGff3 deals with Gff having only "+" strand entries (bug report from Nicolas Servant) as well as "?" strand entries
