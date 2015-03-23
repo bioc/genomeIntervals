@@ -37,7 +37,8 @@ setMethod(f="writeGff3",
 
             ## write
             write("##gff-version 3",file=file)
-            write.table(format(object,scientific = FALSE),
+            write.table(format(object,scientific = FALSE,
+                               trim=TRUE),
                         append=TRUE,quote=FALSE,sep="\t",
                         row.names=FALSE,col.names=FALSE,
                         file=file)
