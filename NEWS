@@ -1,3 +1,8 @@
+CHANGES IN VERSION 1.23.2
+--------------------------
+
+  o Ported version 1.22.2-1.22.3 changes
+
 CHANGES IN VERSION 1.23.1
 --------------------------
 
@@ -7,6 +12,16 @@ CHANGES IN VERSION 1.23.0
 --------------------------
 
   o Bioc Version 3.1
+
+CHANGES IN VERSION 1.22.3
+--------------------------
+
+  o Fixed a documentation cosmetic issue
+
+CHANGES IN VERSION 1.22.2
+--------------------------
+
+  o Fixed a pretty printing issue if the formatting (inclusion of space)
 
 CHANGES IN VERSION 1.22.1
 --------------------------
