@@ -14,7 +14,7 @@ GenomeIntervals(chromosome, start, end, strand = NULL,
 }
 \arguments{
   \item{chromosome}{character vector of chromosome names of the
-    intervals; will become the \code{seq_names} of the resulting object}
+    intervals; will become the \code{seqnames} of the resulting object}
   \item{start}{numeric or integer; start (left-most) coordinate of the
     intervals}
   \item{end}{numeric or integer; end (right-most) coordinate of the
@@ -37,7 +37,7 @@ GenomeIntervals(chromosome, start, end, strand = NULL,
   be of the same length, with the first element of each vector
   corresponding to the first interval, the second element to the second
   interval, and so on.
-  
+
   The same applies to \code{strand}, \code{inter.base}, \code{leftOpen},
   \code{rightOpen} and any additional vectors in '...', if they are
   specified.

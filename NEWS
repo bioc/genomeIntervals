@@ -1,3 +1,26 @@
+CHANGES IN VERSION 1.25.1
+--------------------------
+
+  o Deprecated the seq_name accessors in favour of the BiocGenerics seqnames
+
+  o Added a width accessor - similar to the IRanges functionality
+
+  o Added coercion to GRangesList and RangedData
+
+  o Edited some of the documentation (man page) and NAMESPACE generation to
+  use roxygen2
+
+CHANGES IN VERSION 1.25.0
+--------------------------
+
+ o Bioc Version 3.2 devel
+
+CHANGES IN VERSION 1.24.0
+--------------------------
+
+  o Bioc Version 3.1 release
+
+
 CHANGES IN VERSION 1.23.2
 --------------------------
 
