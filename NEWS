@@ -20,6 +20,11 @@ CHANGES IN VERSION 1.25.0
 
  o Bioc Version 3.2 devel
 
+CHANGES IN VERSION 1.24.1
+--------------------------
+
+  o Fixing Git-SVN issues
+
 CHANGES IN VERSION 1.24.0
 --------------------------
 
