@@ -16,10 +16,10 @@ Tools for operation on genomic intervals.
 \details{
 	\tabular{ll}{
 	Package: \tab genomeIntervals\cr
-	Version: \tab 1.22.3\cr
-	Date: \tab 2015-03-23\cr
+	Version: \tab 1.24.1\cr
+	Date: \tab 2015-06-22\cr
 	Type: \tab Package\cr
-	Depends: \tab R (>= 2.15.0), intervals (>= 0.13.3), BiocGenerics, methods\cr
+	Depends: \tab R (>= 2.15.0), intervals (>= 0.14.0), BiocGenerics, methods\cr
 	Suggests: \tab \cr
 	License: \tab Artistic 2.0\cr
 	BiocViews: \tab DataImport, Infrastructure, Genetics\cr
