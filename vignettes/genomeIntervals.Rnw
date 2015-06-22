@@ -262,7 +262,7 @@ filePath <- file.path(
 
 gff <- readGff3(
         file.path( filePath, "sgd_simple.gff" ),
-        isRightOpen=FALSE,quiet=TRUE
+        isRightOpen=FALSE
 )
 idpa = getGffAttribute( gff, c( "ID", "Parent" ) )
 head(idpa)

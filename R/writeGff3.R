@@ -1,4 +1,3 @@
-## The Roxygen doc is in readGff3.R
 ## write Gff3
 setGeneric(name="writeGff3",
            def=function(object,file=character(1)){
