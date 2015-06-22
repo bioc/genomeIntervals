@@ -1,6 +1,6 @@
 # We define two classes for genome intervals. The basic class extends Interval_full with:
 # a seq_name factor to represent chromosomes and more generally any sequence origin. The second also stores strand orientation.
-# a logical vector "inter_base" (to flag zero-length features such as restriction sites)
+# a logical vector "inter_base" (to flag zero-length features such as restriction sites) 
 
 
 ######## Class definitions
@@ -17,18 +17,18 @@ setClass(
 			# check 'annotation' data.frame
 			if(!is.data.frame(object@annotation) || nrow( object@.Data ) != nrow( object@annotation ) )
 				return("The 'annotation' slot must be a data.frame with as many rows as the endpoint matrix.")
-
+			
 			# Check 'seq_name' column within annotation data.frame slot
 			if ( !('seq_name' %in% names(object@annotation)) || !is.factor( object@annotation$seq_name ) || any(is.na(object@annotation$seq_name)) )
 				return( "The 'annotation' slot should have a column named 'seq_name' that is a factor and does not contain missing values." )
-
+			
 			# Check 'inter_base' column within annotation data.frame slot
 			if ( !('inter_base' %in% names(object@annotation)) || !is.logical( object@annotation$inter_base ) || any(is.na(object@annotation$inter_base)) )
 				return( "The 'annotation' slot should have a column named 'inter_base' that is logical and does not contain missing values." )
-
+			
 			if( object@type!='Z')
 				return( "The intervals 'type' should be 'Z'." )
-
+			
 			return( TRUE )
 		}
 )
@@ -39,14 +39,14 @@ setClass(
 		"Genome_intervals_stranded",
 		contains = "Genome_intervals",
 		validity = function( object ) {
-
+			
 			# Check 'strand' column within annotation data.frame slot
 			if ( !('strand' %in% names(object@annotation)) || !is.factor( object@annotation$strand ) )
 				return( "The 'annotation' slot should have column named 'strand' that is a factor." )
-
+			
 			if ( !nlevels(object@annotation$strand)==2 )
 				return( "The 'strand' slot should be a factor with exactly two levels." )
-
+			
 			return( TRUE )
 		}
 )
@@ -58,7 +58,7 @@ setClass(
 #### annotation
 ## implements the generics of BiocGenerics
 setMethod(
-		f="annotation",
+		f="annotation",          
 		signature="Genome_intervals",
 		definition= function(object){
 			object@annotation
@@ -101,10 +101,7 @@ setGeneric( "seq_name", function(x) standardGeneric( "seq_name" ) )
 setMethod(
 		"seq_name",
 		signature( "Genome_intervals" ),
-		function( x ){
-      .Deprecated(new = "seqnames")
-      seqnames(x)
-		}
+		function( x ) x@annotation$seq_name
 )
 
 setGeneric( "seq_name<-", function( x, value ) standardGeneric( "seq_name<-" ) )
@@ -112,34 +109,15 @@ setGeneric( "seq_name<-", function( x, value ) standardGeneric( "seq_name<-" ) )
 setReplaceMethod(
 		"seq_name", "Genome_intervals",
 		function( x, value ) {
-		  .Deprecated(new = "seqnames<-")
-			return(seqnames(x)<-value)
+			if ( is.vector( value ) )
+				value = factor(value)
+			if(!( length( value ) %in% c(1,nrow(x)) ) )
+				stop( "The 'seq_name' argument should be a vector or a factor of length equal to 1 or to the number of rows of the end point matrix." )
+			if(length(value)==1) value = rep(value, nrow(x))
+			x@annotation$seq_name <- value
+			return(x)
 		}
 )
-
-#### seqnames
-# TODO ask for seqnames to be BiocGeneric
-setMethod(
-  "seqnames",
-  signature( "Genome_intervals" ),
-  function( x ){
-    x@annotation$seq_name
-  }
-)
-
-setReplaceMethod(
-  f="seqnames", "Genome_intervals",
-  function( x, value ) {
-    if ( is.vector( value ) )
-      value = factor(value)
-    if(!( length( value ) %in% c(1,nrow(x)) ) )
-      stop( "The 'seqnames' argument should be a vector or a factor of length equal to 1 or to the number of rows of the end point matrix." )
-    if(length(value)==1) value = rep(value, nrow(x))
-    x@annotation$seq_name <- value
-    return(x)
-  }
-)
-
 
 #### strand
 
@@ -158,8 +136,8 @@ setReplaceMethod(
 		function( x, value ) {
 			if ( is.vector( value ) )
 				value = factor(value)
-			if(nlevels(value)!=2)
-				stop( "The 'strand' argument should be a vector with exactly 2 distinct values or a factor with 2 levels." )
+			if(nlevels(value)!=2) 
+				stop( "The 'strand' argument should be a vector with exactly 2 distinct values or a factor with 2 levels." )		
 			if(!( length( value ) %in% c(1,nrow(x)) ) )
 				stop( "The 'strand' argument should be a vector or a factor of length equal to 1 or to the number of rows of the end point matrix." )
 			if(length(value)==1) value = rep(value, nrow(x))
@@ -207,20 +185,20 @@ setMethod(
 				stop( "Cannot assign to NA indices or row names which do not exist." )
 			n <- length( (1:nrow(x))[i] )
 			if ( n != nrow( value ) )
-				stop( "Replacement object is of the wrong size." )
-
+				stop( "Replacement object is of the wrong size." )            
+			
 			if( length(annotation(value)) != length(annotation(x)) )
 				stop("Number of columns of annotation slots do not match. Check if you're assigning a Genome_intervals_stranded into rows of a Genome_intervals or vice-versa.")
 			if( any( names(annotation(value)) != names(annotation(x)) ) )
 				stop("Names of annotation do not match. Check if you're assigning a Genome_intervals_stranded into rows of a Genome_intervals or vice-versa.")
-
+			
 			#### Intervals
 			x@.Data[i,] <- value@.Data
 			x@closed[i,] <- value@closed
-
-			## Annotation
+			
+			## Annotation            
 			annotation(x)[i,] <- annotation(value)
-
+			
 			#### Rownames
 			has_names_x <- !is.null( rownames(x) )
 			has_names_value <- !is.null( rownames(value) )
@@ -282,7 +260,7 @@ setMethod(
 				# call to Intervals coercion method for the intervals
 				ints <- as( as(from, "Intervals_full"), "character")
 				# add seq_name in first column, inter_base in last column
-				result <- paste(seqnames(from), ints, ifelse( inter_base(from), "*", ""))
+				result <- paste(seq_name(from), ints, ifelse( inter_base(from), "*", ""))
 				return( result )
 			}
 		}
@@ -298,7 +276,7 @@ setMethod(
 				# call to Intervals coercion method for the intervals
 				ints <- as( as(from, "Intervals_full"), "character")
 				# add seq_name and strand in first columns, inter_base in last column
-				result <- paste(seqnames(from), strand(from), ints, ifelse( inter_base(from), "*", "") )
+				result <- paste(seq_name(from), strand(from), ints, ifelse( inter_base(from), "*", "") )
 				return( result )
 			}
 		}
@@ -306,9 +284,7 @@ setMethod(
 
 
 ## more user-friendly constructor function:
-"GenomeIntervals" <- function(chromosome="",
-                              start=0, end=0,
-                              strand=NULL,
+GenomeIntervals <- function(chromosome, start, end, strand=NULL,
 		inter.base=NULL, leftOpen=NULL,
 		rightOpen=NULL, ...)
 {
@@ -322,17 +298,15 @@ setMethod(
 	}
 	## by default, all intervals are assumed to be closed,
 	##  unless specified otherwise:
-	if (!is.null(leftOpen)){
+	if (!is.null(leftOpen))
 		stopifnot(is.logical(leftOpen), length(leftOpen)==length(chromosome))
-	} else {
+	else
 		leftOpen <- vector("logical", length(chromosome))
-	}
-	if (!is.null(rightOpen)){
+	if (!is.null(rightOpen))
 		stopifnot(is.logical(rightOpen), length(rightOpen)==length(chromosome))
-	} else {
+	else
 		rightOpen <- vector("logical", length(chromosome))
-	}
-
+	
 	## prepare annotation data.frame for object:
 	annoDf <- data.frame("seq_name"=factor(chromosome),
 			"inter_base"=inter.base)
@@ -342,7 +316,7 @@ setMethod(
 		for (i in 1:length(further.args))
 			annoDf[[names(further.args)[i]]] <- eval(further.args[[i]])
 	}
-
+	
 	## create object depending on whether or not the strand was specified
 	if (!is.null(strand)){
 		## create object of class "Genome_intervals_stranded"
@@ -372,7 +346,7 @@ setAs("Genome_intervals","data.frame",function(from){
   gff3 <- ifelse(ncol(annotation(from))==8,
                  all(colnames(annotation(from)) == c("seq_name", "strand", "inter_base", "source", "type", "score", "phase", "gffAttributes")),
                  FALSE)
-
+  
   ## create the df
   if(gff3){
     df <- cbind(annotation(from),from[,1:2])[,c(1,4,5,9,10,6,2,7,8)]
@@ -380,20 +354,12 @@ setAs("Genome_intervals","data.frame",function(from){
   } else {
     df <- cbind(annotation(from),from[,1:2])[,-grep("inter_base",colnames(annotation(from)))]
   }
-
+  
   ## convert factors to characters
   df[,sapply(df,is.factor)] <- apply(df[,sapply(df,is.factor),drop=FALSE],2,as.character)
   ## to avoid introducing warnings when replacing NA values by dots
   df[is.na(df)] <- "."
-
+  
   return(df)
 })
 
-## extract the width as for GRanges
-setMethod(f = "width",
-          signature = "Genome_intervals",
-          definition=function(x){
-            ifelse(inter_base(x),
-                   x[,2] - x[,1],
-                   x[,2] - x[,1] + 1)
-          })

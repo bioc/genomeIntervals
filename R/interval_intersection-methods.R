@@ -1,6 +1,6 @@
 # common combination of factors
 # idenitifed as alle entris in the first data.frame of factor combination
-# that have at least one entry matching in each of the factor combination dataframes
+# that have at least one entry matching in each of the factor combination dataframes  
 
 commonCombination = function(df.list){
     common = sapply(
@@ -36,10 +36,10 @@ setMethod(
         function( x, ... ) {
             ## work by sequences and inter_base, restricting to the set of common sequences
             args <- c( list(x), list(...) )
-
+            
             ## get unified seq_name levels
-            seqlev = sort( unique(unlist(lapply(args, function(x) levels(seqnames(x) ) ) ) ) )
-
+            seqlev = sort( unique(unlist(lapply(args, function(x) levels(seq_name(x) ) ) ) ) )
+            
             ## combination of factors per arg
             fac.comb.list <- lapply(
                     args,
@@ -49,9 +49,9 @@ setMethod(
                         rv
                     }
             )
-
+            
             fac.comb <- commonCombination( fac.comb.list)
-
+            
             ## do the intersection by seq_names and inter_base
             interv.list = lapply(
                     1:nrow(fac.comb),
@@ -59,19 +59,18 @@ setMethod(
                         ## extract the intervals
                         ints = lapply(
                                 args,
-                                function(y){
-                                    as( y[ (inter_base(y)==fac.comb$inter_base[i]) &
-                                             (seqnames(y)==fac.comb$seq_name[i]) ], "Intervals_full" )}
+                                function(y)
+                                    as( y[ (inter_base(y)==fac.comb$inter_base[i]) & (seq_name(y)==fac.comb$seq_name[i]) ], "Intervals_full" )
                         )
                         ## apply the intervals intersection
                         do.call( interval_intersection, ints)
                     }
             )
             nrows = lapply(interv.list, nrow)
-
+            
             ## combine intervals
             interv = do.call(c, interv.list)
-
+            
             ## make returned object
             new(
                     "Genome_intervals",
@@ -90,26 +89,26 @@ setMethod(
         "interval_intersection",
         signature( "Genome_intervals_stranded" ),
         function( x, ... ) {
-
+            
             ## work by sequences and inter_base, restricting to the set of common sequences
             args <- c( list(x), list(...) )
-
+            
             same_class <- all( sapply( args, is, "Genome_intervals_stranded" ) )
             if(!same_class)
                 stop("All arguments should have the same class.")
-
+            
             strandNA <- sapply(args, function(y) any(is.na(strand(y))))
             if( any(strandNA) )
                 stop("NA(s) present in the strand of at least one argument.")
-
+            
             ## get unified seq_name levels
-            seqlev = sort( unique(unlist(lapply(args, function(x) levels(seqnames(x))))) )
-
+            seqlev = sort( unique(unlist(lapply(args, function(x) levels(seq_name(x))))) )
+            
             ## get unified strd lev
             strdlev = sort( unique(unlist(lapply(args, function(x) levels(strand(x))))) )
             if(length(strdlev)!=2)
                 stop("The arguments do not have the same levels for strand.")
-
+            
             ## combination of factors per arg
             fac.comb.list <- lapply(
                     args,
@@ -120,9 +119,9 @@ setMethod(
                         rv
                     }
             )
-
+            
             fac.comb <- commonCombination( fac.comb.list)
-
+            
             ## do the intersection by seq_names and inter_base
             interv.list = lapply(
                     1:nrow(fac.comb),
@@ -132,20 +131,20 @@ setMethod(
                                 args,
                                 function(y)
                                     as( y[
-                                      (inter_base(y)==fac.comb$inter_base[i]) &
-                                        (seqnames(y)==fac.comb$seq_name[i]) &
-                                        (strand(y)==fac.comb$strand[i])
-                                      ], "Intervals_full" )
+                                                    (inter_base(y)==fac.comb$inter_base[i]) &
+                                                            (seq_name(y)==fac.comb$seq_name[i]) &
+                                                            (strand(y)==fac.comb$strand[i])
+                                            ], "Intervals_full" )
                         )
                         ## apply the intervals intersection
                         do.call( interval_intersection, ints)
                     }
             )
             nrows = lapply(interv.list, nrow)
-
+            
             ## combine intervals
             interv = do.call(c, interv.list)
-
+            
             ## make returned object
             new(
                     "Genome_intervals_stranded",
