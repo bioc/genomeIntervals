@@ -35,7 +35,7 @@
 \S4method{rank}{Genome_intervals}(x, na.last=TRUE,
      ties.method = c("average", "first", "random", "max", "min") )
 \S4method{xtfrm}{Genome_intervals}(x)
-     
+
 }
 
 
@@ -44,12 +44,12 @@
 	\item{x}{
     Objects of class \code{\linkS4class{Genome_intervals}} or \code{\linkS4class{Genome_intervals_stranded}}.
   }
-  
+
   \item{...}{
     Objects of class \code{\linkS4class{Genome_intervals}}, \code{\linkS4class{Genome_intervals_stranded}} or of any other class for \code{order}.
   }
   \item{na.last}{
-    Ignored for ordering  \code{\linkS4class{Genome_intervals}} and  \code{\linkS4class{Genome_intervals_stranded}} objects 
+    Ignored for ordering  \code{\linkS4class{Genome_intervals}} and  \code{\linkS4class{Genome_intervals_stranded}} objects
   }
   \item{decreasing}{
     \code{TRUE} or \code{FALSE}.
@@ -61,17 +61,17 @@
 }
 
 \details{
-   An order on Genome_intervals entries is defined by sorting by 
-	1. seq_name
+   An order on Genome_intervals entries is defined by sorting by
+	1. seqnames
 	2. start, where closed start & not inter-base < closed start & inter-base < open start & not inter-base < open start & inter-base
-	3. stop, where open stop & not inter-base < open stop & inter-base < closed stop & not inter-base < closed stop & inter-base 
+	3. stop, where open stop & not inter-base < open stop & inter-base < closed stop & not inter-base < closed stop & inter-base
 	4. strand (for Genome_intervals_stranded object)
-  
-  The factors \code{seq_name} and \code{strand} are sorted according to their levels (default R behavior).
-  
+
+  The factors \code{seqnames} and \code{strand} are sorted according to their levels (default R behavior).
+
   The primitive is implemented in \code{xtfrm} which is then called by the other methods.
   Hence, the \code{order}, \code{sort} and \code{rank} methods are consistent.
-  
+
   \describe{
     \item{}{
       \code{order(..., na.last=TRUE, decreasing=TRUE)}:
@@ -79,7 +79,7 @@
      into ascending or descending order, breaking ties by further
      arguments.
         See \code{\link[base]{order}} in the base package for more details.
-        \code{na.last} is ignored for \code{\linkS4class{Genome_intervals}} objects. 
+        \code{na.last} is ignored for \code{\linkS4class{Genome_intervals}} objects.
     }
     \item{}{
       \code{rank(x, na.last=TRUE, ties.method=c("average", "first", "random", "max", "min"))}:
@@ -97,8 +97,8 @@
       See \code{\link[base]{xtfrm}} in the base package for more details.
       Workhorse for the other methods
     }
-	
-	}    
+
+	}
 }
 
 \seealso{
@@ -118,9 +118,9 @@ sort(gi)
 rank(gi)
 order(gi)
 
-## Define order on seq_names at your convenience
+## Define order on seqnames at your convenience
 ## by specifying the order of the levels
-## compare: 
+## compare:
 gi = GenomeIntervals(
 		c("chr2", "chr2", "chr10", "chr10"),
 		c(1,1,10,10),

@@ -1,12 +1,12 @@
 Package: genomeIntervals
-Version: 1.25.0
-Date: 2015-03-23
+Version: 1.25.1
+Date: 2015-04-26
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@genzentrum.lmu.de>, Joern Toedling, Richard Bourgon, Nicolas Delhomme
 Maintainer: Julien Gagneur <gagneur@genzentrum.lmu.de>
 Depends: R (>= 2.15.0), methods, intervals (>= 0.14.0), BiocGenerics (>= 0.10.0)
-Imports:
+Imports: GenomeInfoDb (>= 1.4.0), GenomicRanges (>= 1.20.3), IRanges(>= 2.2.1), S4Vectors (>= 0.6.0)
 Suggests:
 Description:
   This package defines classes for representing genomic intervals
@@ -15,8 +15,10 @@ Description:
   enhanced by the package 'girafe'.
 License: Artistic-2.0
 Collate: 	Genome_intervals-class.R
-			Genome_intervals-ordering.R
-			show-methods.R
+			  Genome_intervals-coercion-methods.R
+      Genome_intervals-package.R
+      Genome_intervals-ordering.R
+      show-methods.R
 			size-methods.R
 			c.R
 			core_annotated.R
@@ -25,7 +27,7 @@ Collate: 	Genome_intervals-class.R
 			interval_overlap-methods.R
 			interval_intersection-methods.R
 			interval_union-methods.R
-                        which_nearest-methods.R
+      which_nearest-methods.R
 			parseGffAttributes.R
 			readGff3.R
 			writeGff3.R
