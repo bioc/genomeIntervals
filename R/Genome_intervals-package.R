@@ -32,9 +32,10 @@
 ##' "seqnames<-" strand "strand<-" inter_base "inter_base<-" "type<-" "[" "[["
 ##' "$" coerce size show rank sort xtfrm core_annotated interval_union
 ##' interval_complement interval_intersection interval_overlap
-##' distance_to_nearest which_nearest width
+##' distance_to_nearest which_nearest width readBasePairFeaturesGff3
+##' readZeroLengthFeaturesGff3 readGff3 writeGff3
 #### S3 Methods
-##' @export c readGff3 parseGffAttributes getGffAttribute GenomeIntervals writeGff3
+##' @export c parseGffAttributes getGffAttribute GenomeIntervals
 NULL
 
 ###==========================

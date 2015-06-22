@@ -1,6 +1,11 @@
 CHANGES IN VERSION 1.25.1
 --------------------------
 
+  o Changed readGff3 to use closed intervals by default. Implemented two
+  sub-functions that implement reading a gff3 as base-pair features only (no
+  zero length intervals, i.e. right-closed intervals) or which allows for
+  zero length intervals, i.e. right-open intervals, when start equals end)
+
   o Deprecated the seq_name accessors in favour of the BiocGenerics seqnames
 
   o Added a width accessor - similar to the IRanges functionality
