@@ -25,8 +25,8 @@
 #### Classes
 ##' @exportClass Genome_intervals Genome_intervals_stranded
 #### S3 Methods
-##' @S3method c Genome_intervals
-##' @S3method c Genome_intervals_stranded
+# @S3method c Genome_intervals
+# @S3method c Genome_intervals_stranded
 #### S4 Methods
 ##' @exportMethod annotation annotation<- seq_name "seq_name<-" seqnames
 ##' "seqnames<-" strand "strand<-" inter_base "inter_base<-" "type<-" "[" "[["
@@ -34,7 +34,7 @@
 ##' interval_complement interval_intersection interval_overlap
 ##' distance_to_nearest which_nearest width
 #### S3 Methods
-##' @export readGff3 parseGffAttributes getGffAttribute GenomeIntervals writeGff3
+##' @export c readGff3 parseGffAttributes getGffAttribute GenomeIntervals writeGff3
 NULL
 
 ###==========================

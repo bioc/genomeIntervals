@@ -5,6 +5,7 @@
 \alias{as,Genome_intervals,GRangesList-method}
 \alias{as,Genome_intervals,RangedData-method}
 \alias{as,Genome_intervals-method}
+\alias{coerce,Genome_intervals,GRanges-method}
 \alias{coerce,Genome_intervals,GRangesList-method}
 \alias{coerce,Genome_intervals,RangedData-method}
 \alias{genomeIntervals coercion methods}
@@ -16,8 +17,6 @@
 \item{from}{An object of class \code{\linkS4class{Genome_intervals}}}
 
 \item{to}{a character string; either RangedData or GRangesList}
-
-\item{x}{An object of class \code{\linkS4class{Genome_intervals}}}
 }
 \value{
 \describe{

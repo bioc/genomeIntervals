@@ -27,7 +27,7 @@
 
 <<set_width, echo=FALSE>>=
 options( width = 80 )
-@ 
+@
 
 % Make title
 \maketitle
@@ -82,12 +82,12 @@ Closure status can be adjusted quickly for all intervals in an object by supplyi
 i2 <- i
 closed(i2) <- c( TRUE, FALSE )
 i2
-@ 
+@
 
 Sequence name and strand data can be accessed and modified with the \texttt{seq\_name} and \texttt{strand} accessors:
 
 <<seqname.strand>>=
-seq_name(i)
+seqnames(i)
 strand(i)
 strand(i)[2] <- "-"
 @
@@ -118,7 +118,7 @@ i[["myannot"]]
 
 The \texttt{close\_intervals} method returns a representation which is adjusted to have closed left and right end points, standardizing results.
 Note that \texttt{close\_intervals} does not change the content of the intervals, only their representation.
-The companion methods \texttt{open\_intervals} and \texttt{adjust\_closure}, also imported from the package \texttt{intervals}, permit the other transformations. 
+The companion methods \texttt{open\_intervals} and \texttt{adjust\_closure}, also imported from the package \texttt{intervals}, permit the other transformations.
 
 <<close-intervals>>=
 close_intervals(i)
@@ -151,7 +151,7 @@ new(
 \subsection{Overlap}
 
 The \texttt{interval\_overlap} method identifies, for each interval of the \texttt{from} object, all overlapping intervals from the \texttt{to} object.
-It works by \texttt{seq\_name} and (if applicable) \texttt{strand}.  
+It works by \texttt{seq\_name} and (if applicable) \texttt{strand}.
 
 <<intervalOverlap>>=
 interval_overlap( from=i, to=j )
@@ -163,15 +163,15 @@ interval_overlap( from=i, to=j )
 \subsection{Set operations}
 
 The \emph{interval-union}, obtained by a call to \texttt{interval\_union}, is defined as the union of all intervals of a \texttt{Genome\_intervals} object, computed by strand and sequence name.
-Note that the output of \texttt{interval\_union} does not include row names or any extra annotation beyond sequence name and strand, since the union process typically combines intervals, making old annotation inappropriate. 
+Note that the output of \texttt{interval\_union} does not include row names or any extra annotation beyond sequence name and strand, since the union process typically combines intervals, making old annotation inappropriate.
 
 <<interval-union>>=
 interval_union(i)
 @
 
-The intersection between intervals of two (or more) \texttt{Genome\_intervals} 
+The intersection between intervals of two (or more) \texttt{Genome\_intervals}
 objects can be obtained by using \texttt{interval\_intersection}; the complement of a \texttt{Genome\_intervals} object can be obtained by using \texttt{interval\_complement}.
-(\emph{Note:} \texttt{interval\_complement} currently resorts to \texttt{-Inf} and \texttt{Inf} for outer end points. 
+(\emph{Note:} \texttt{interval\_complement} currently resorts to \texttt{-Inf} and \texttt{Inf} for outer end points.
 This function will be improved in a future release to utilize known chromosome extents.)
 
 <<setoperations>>=
@@ -200,7 +200,7 @@ Note that the distance to nearest of a \texttt{from} interval equals $0$ if and 
 It is sometimes useful to define positions \emph{between} two nucleotides --- to represent, for example, an insertion point or an enzyme restriction site.
 (The GFF format provides support for such positions.)
 To deal with this, we consider two types of positions along genomic sequences.
-The \emph{base} positions are directly at the nucleotides; all examples shown so far in this vignette deal with base positions. 
+The \emph{base} positions are directly at the nucleotides; all examples shown so far in this vignette deal with base positions.
 The \emph{inter-base} positions, on the other hand, fall between two consecutive nucleotides.
 Specifically, we define an inter-base position at $i$ to lie between bases $i$ and $i+1$.
 We then consider two types of genomic intervals: base intervals (composed of consecutive base positions) and inter-base intervals (consecutive inter-bases).
@@ -260,9 +260,9 @@ filePath <- file.path(
         "example_files"
 )
 
-gff <- readGff3( 
-        file.path( filePath, "sgd_simple.gff" ), 
-        isRightOpen=FALSE 
+gff <- readGff3(
+        file.path( filePath, "sgd_simple.gff" ),
+        isRightOpen=FALSE
 )
 idpa = getGffAttribute( gff, c( "ID", "Parent" ) )
 head(idpa)
@@ -273,7 +273,7 @@ head(idpa)
 
 \section{Session information}
 
-@ 
+@
 <<sessionInfo, results=tex, echo=FALSE>>=
 si <- as.character( toLatex( sessionInfo() ) )
 cat( si[ -grep( "Locale", si ) ], sep = "\n" )

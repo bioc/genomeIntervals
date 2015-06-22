@@ -17,7 +17,7 @@ Tools for operation on genomic intervals.
 	\tabular{ll}{
 	Package: \tab genomeIntervals\cr
 	Version: \tab 1.25.1\cr
-	Date: \tab 2015-04-26\cr
+	Date: \tab 2015-04-27\cr
 	Type: \tab Package\cr
 	Depends: \tab R (>= 2.15.0), intervals (>= 0.13.3), BiocGenerics, methods\cr
   Imports: \tab GenomeInfoDb (>= 1.5.0)\cr

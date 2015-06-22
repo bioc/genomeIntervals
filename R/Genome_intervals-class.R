@@ -133,7 +133,7 @@ setReplaceMethod(
     if ( is.vector( value ) )
       value = factor(value)
     if(!( length( value ) %in% c(1,nrow(x)) ) )
-      stop( "The 'seq_name' argument should be a vector or a factor of length equal to 1 or to the number of rows of the end point matrix." )
+      stop( "The 'seqnames' argument should be a vector or a factor of length equal to 1 or to the number of rows of the end point matrix." )
     if(length(value)==1) value = rep(value, nrow(x))
     x@annotation$seq_name <- value
     return(x)
@@ -282,7 +282,7 @@ setMethod(
 				# call to Intervals coercion method for the intervals
 				ints <- as( as(from, "Intervals_full"), "character")
 				# add seq_name in first column, inter_base in last column
-				result <- paste(seq_name(from), ints, ifelse( inter_base(from), "*", ""))
+				result <- paste(seqnames(from), ints, ifelse( inter_base(from), "*", ""))
 				return( result )
 			}
 		}
@@ -298,7 +298,7 @@ setMethod(
 				# call to Intervals coercion method for the intervals
 				ints <- as( as(from, "Intervals_full"), "character")
 				# add seq_name and strand in first columns, inter_base in last column
-				result <- paste(seq_name(from), strand(from), ints, ifelse( inter_base(from), "*", "") )
+				result <- paste(seqnames(from), strand(from), ints, ifelse( inter_base(from), "*", "") )
 				return( result )
 			}
 		}

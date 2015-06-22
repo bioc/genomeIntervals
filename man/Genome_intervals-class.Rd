@@ -2,9 +2,14 @@
 \docType{class}
 \alias{Genome_intervals-class}
 \alias{[,Genome_intervals-method}
+\alias{[,Genome_intervals,ANY-method}
 \alias{[<-,Genome_intervals,ANY,missing,Genome_intervals-method}
 \alias{[[,Genome_intervals-method}
+\alias{[[,Genome_intervals,ANY-method}
+\alias{[[,Genome_intervals,ANY,ANY-method}
 \alias{[[<-,Genome_intervals-method}
+\alias{[[<-,Genome_intervals,ANY-method}
+\alias{[[<-,Genome_intervals,ANY,ANY-method}
 \alias{$,Genome_intervals-method}
 \alias{$<-,Genome_intervals-method}
 
@@ -28,6 +33,7 @@
 \alias{seqnames<-,Genome_intervals-method}
 \alias{size,Genome_intervals-method}
 \alias{show,Genome_intervals-method}
+\alias{strand<-,Genome_intervals_stranded,ANY-method}
 \alias{type<-,Genome_intervals-method}
 \alias{which_nearest,Genome_intervals,Genome_intervals-method}
 

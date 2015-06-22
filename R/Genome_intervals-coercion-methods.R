@@ -8,6 +8,7 @@
 ##'
 ##' @aliases coerce,Genome_intervals,RangedData-method
 ##' coerce,Genome_intervals,GRangesList-method
+##' coerce,Genome_intervals,GRanges-method
 ##' as,Genome_intervals,RangedData-method
 ##' as,Genome_intervals,GRangesList-method
 ##' as as,Genome_intervals-method
@@ -15,7 +16,6 @@
 ##' @rdname Genome_intervals-coercion-methods
 ##' @param from An object of class \code{\linkS4class{Genome_intervals}}
 ##' @param to a character string; either RangedData or GRangesList
-##' @param x An object of class \code{\linkS4class{Genome_intervals}}
 ##' @usage \S4method{as}{Genome_intervals}(from,to)
 ##' @return \describe{
 ##' \item{coerce}{ A \code{\linkS4class{RangedData}} or
@@ -50,7 +50,7 @@ setAs(from="Genome_intervals",to="RangedData",def=function(from){
 
   ## create the space
   ## drop the original levels
-  space = as.character(seq_name(from))
+  space = as.character(seqnames(from))
   names(ranges) <- seq(along=ranges)
 
   # create the values
@@ -104,7 +104,7 @@ setAs(from="Genome_intervals",to="GRanges",def=function(from){
   return(GRanges(ranges=IRanges(
     start=from[,1],
     end=from[,2]),
-    seqnames=seq_name(from),
+    seqnames=seqnames(from),
     strand=strand(from),
     cbind(
       DataFrame(apply(
@@ -118,5 +118,5 @@ setAs(from="Genome_intervals",to="GRanges",def=function(from){
 ## coerce into
 setAs(from="Genome_intervals",to="GRangesList",def=function(from){
   ## create the object
-  return(split(as(from,"GRanges"),seq_name(from)))
+  return(split(as(from,"GRanges"),seqnames(from)))
 })
