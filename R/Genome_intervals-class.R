@@ -393,7 +393,10 @@ setAs("Genome_intervals","data.frame",function(from){
 setMethod(f = "width",
           signature = "Genome_intervals",
           definition=function(x){
-            ifelse(inter_base(x),
-                   x[,2] - x[,1],
-                   x[,2] - x[,1] + 1)
+            # the width
+            x[,2] - x[,1] +
+              # right end (we add one if right closed)
+              x@closed[,2] -
+              # left end (we subtract one if left open)
+              !x@closed[,1]
           })
