@@ -1,5 +1,7 @@
 ### To update the DESCRIPTION
 # installed.packages()[c("GenomeInfoDb","GenomicRanges","IRanges","S4Vectors"),"Version"]
+### To update the man and NAMESPACE
+# roxygenize(".",roclets=c('rd', 'collate', 'namespace'),clean=TRUE)
 ###==========================
 ## To define the NAMESPACE
 ###==========================
@@ -10,8 +12,8 @@
 ##' @importClassesFrom intervals Intervals_virtual Intervals_virtual_or_numeric
 ##'  Intervals_full
 #### S4 Methods
-##' @importMethodsFrom BiocGenerics annotation "annotation<-" strand
-##' "strand<-" width
+##' @importMethodsFrom BiocGenerics annotation "annotation<-" Reduce
+##' strand "strand<-" width
 ##' @importMethodsFrom GenomeInfoDb seqnames "seqnames<-"
 ##' @importMethodsFrom intervals "[" close_intervals closed "closed<-"
 ##' empty head close_intervals open_intervals interval_union interval_complement

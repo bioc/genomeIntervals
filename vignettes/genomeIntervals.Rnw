@@ -78,7 +78,7 @@ closed(i)[2,2] <- FALSE
 Closure status can be adjusted quickly for all intervals in an object by supplying only two values. In this case, the two values are assumed to correspond to the left and right end points.
 (This is not R's standard recycling behavior, but is far more useful here.)
 
-<<<quick.closure>>=
+<<quick.closure>>=
 i2 <- i
 closed(i2) <- c( TRUE, FALSE )
 i2

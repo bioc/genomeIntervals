@@ -12,7 +12,7 @@ setMethod(
             core = lapply(args, core_annotated)
 
             ## combines all passed object into a single one
-            x_comb <- do.call( c, core)
+            x_comb <- Reduce(c, core)
 
             ## then split by sequence and inter_base and call next method
             s = split(	x_comb, list( inter_base(x_comb), seqnames(x_comb) ), drop=FALSE )
@@ -61,12 +61,12 @@ setMethod (
             core = lapply(args, core_annotated)
 
             ## combines all passed object into a single one
-            x_comb <- do.call( c, core)
+            x_comb <- Reduce(c, core)
 
             ## then split by strand and call next method
             s = split(x_comb, strand(x_comb), drop=TRUE )
             gi.list = lapply( s , function(y) interval_union( as(y,"Genome_intervals") ) )
-            gi = do.call(c, gi.list)
+            gi = Reduce(c, gi.list)
             new(
                     "Genome_intervals_stranded",
                     gi@.Data,

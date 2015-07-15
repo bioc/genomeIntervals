@@ -38,7 +38,7 @@ setMethod (
             ## split by strand and call next method
             s = split(x, strand(x), drop=TRUE )
             gi.list = lapply( s , function(y) interval_complement( as(y,"Genome_intervals") ) )
-            gi = do.call(c, gi.list)
+            gi = Reduce(c, gi.list)
             new(
                     "Genome_intervals_stranded",
                     gi@.Data,

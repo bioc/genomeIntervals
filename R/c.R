@@ -1,6 +1,6 @@
 ##' c extension for the \code{genomeIntervals package}
 ##'
-##' This function combines severl genome intervals (stranded or not)
+##' This function combines several genome intervals (stranded or not)
 ##' objects into a single one.
 ##'
 ##' If the arguments have mixed classes ( both \code{\linkS4class{Genome_intervals}}
@@ -10,12 +10,13 @@
 ##' entries, these are discarded. If a vector of object is provided with non \code{genomeIntervals}
 ##' classes, then a list, ordered as the input vector, is returned.
 ##'
-##' @aliases c c,Genome_intervals-methods
-##' c,Genome_intervals_stranded-methods
+##' @aliases c c,Genome_intervals-method
+##' c,Genome_intervals_stranded-method
 ##' @name c
 ##' @rdname c.Genome_intervals
-##' @param ... two or more \code{\linkS4class{Genome_intervals}} or \code{\linkS4class{Genome_intervals_stranded}} objects.
-##' @param recursive inherited from the base \{c} function definition and not used.
+##' @param x a \code{\linkS4class{Genome_intervals}} or \code{\linkS4class{Genome_intervals_stranded}} object - not mandatory.
+##' @param ... two (one if \code{x} is defined) or more \code{\linkS4class{Genome_intervals}} or \code{\linkS4class{Genome_intervals_stranded}} objects.
+##' @param recursive inherited from the base \code{c} function definition and not used.
 ##' @return
 ##' \itemize{
 ##'   \item A single \code{\linkS4class{Genome_intervals}} or
@@ -36,10 +37,22 @@
 ##'
 setMethod("c",
           signature=("Genome_intervals"),
-          definition=function(...,recursive=FALSE
-          ){
-            args <- list(...)
+          definition=function(x, ..., recursive=FALSE){
 
+	  if (!identical(recursive, FALSE)){ 
+             stop("\"c\" method for Genome_intervals objects ", "does not support the 'recursive' argument")
+	  }
+	  if (missing(x)) {
+             args <- unname(list(...))
+             x <- args[[1L]]
+    	  }
+	  else {
+               args <- unname(list(x, ...))
+    	  }
+	  if (length(args) == 1L){
+             return(x)
+	  }
+          
             ## Drop NULL arguments
             if ( any( sapply( args, is.null ) ) )
               args <- args[ !sapply( args, is.null ) ]
@@ -53,7 +66,7 @@ setMethod("c",
             same_class <- all( classes == "Genome_intervals" )
             if ( !same_class  ) {
               warning( "Coercion to 'Genome_intervals' required.", call. = FALSE )
-              return( do.call( c, lapply( args, as, "Genome_intervals" ) ) )
+              return( Reduce( c, lapply( args, as, "Genome_intervals" ) ) )
             }
 
             # rbinds the data frame if possible
@@ -73,9 +86,21 @@ setMethod("c",
 
 setMethod("c",
           signature=("Genome_intervals_stranded"),
-          definition=function(...,recursive=FALSE
-          ){
-            args <- list(...)
+          definition=function(x, ..., recursive=FALSE){
+
+	  if (!identical(recursive, FALSE)){ 
+             stop("\"c\" method for Genome_intervals_stranded objects ", "does not support the 'recursive' argument")
+	  }
+	  if (missing(x)) {
+             args <- unname(list(...))
+             x <- args[[1L]]
+    	  }
+	  else {
+               args <- unname(list(x, ...))
+    	  }
+	  if (length(args) == 1L){
+             return(x)
+	  }
 
             ## Drop NULL arguments
             if ( any( sapply( args, is.null ) ) )
@@ -90,7 +115,7 @@ setMethod("c",
             same_class <- all( classes == "Genome_intervals_stranded" )
             if ( !same_class  ) {
               warning( "Coercion to 'Genome_intervals' required.", call. = FALSE )
-              return( do.call( c, lapply( args, as, "Genome_intervals" ) ) )
+              return( Reduce( c, lapply( args, as, "Genome_intervals" ) ) )
             }
 
             # rbinds the data frame if possible
