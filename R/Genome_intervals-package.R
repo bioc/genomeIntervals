@@ -1,3 +1,5 @@
+### To update the DESCRIPTION
+# installed.packages()[c("GenomeInfoDb","GenomicRanges","IRanges","S4Vectors"),"Version"]
 ###==========================
 ## To define the NAMESPACE
 ###==========================

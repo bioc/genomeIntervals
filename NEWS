@@ -1,3 +1,8 @@
+CHANGES IN VERSION 1.25.3
+--------------------------
+
+  o Changed the "c" function from an S3method to use the S4 generic.
+
 CHANGES IN VERSION 1.25.2
 --------------------------
 
