@@ -39,7 +39,7 @@ setMethod("sort", "Genome_intervals",
 )
 
 setMethod("rank", "Genome_intervals",
-		function(x, na.last=TRUE, ties.method=c("average", "first", "random", "max", "min"))
+		function(x, na.last=TRUE, ties.method=c("average", "first", "last", "random", "max", "min"),...)
 		{
 			if (!missing(ties.method) && !identical(ties.method, "first"))
 				stop("only 'ties.method=\"first\"' is supported when ranking GenomeIntervals")
