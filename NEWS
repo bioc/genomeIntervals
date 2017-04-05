@@ -1,3 +1,8 @@
+CHANGES IN VERSION 1.31.1
+--------------------------
+
+  o the signature of rank() has now ... and "last" as option in ties.method (for compatibility only -- not supported) 
+
 CHANGES IN VERSION 1.25.3
 --------------------------
 

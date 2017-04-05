@@ -1,6 +1,6 @@
 Package: genomeIntervals
-Version: 1.31.0
-Date: 2015-07-15
+Version: 1.31.1
+Date: 2017-04-05
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@genzentrum.lmu.de>, Joern Toedling, Richard Bourgon, Nicolas Delhomme
