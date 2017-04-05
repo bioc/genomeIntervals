@@ -32,8 +32,7 @@
 
 \S4method{sort}{Genome_intervals}(x, decreasing=FALSE, ...)
 
-\S4method{rank}{Genome_intervals}(x, na.last=TRUE,
-     ties.method = c("average", "first", "random", "max", "min") )
+\S4method{rank}{Genome_intervals}(x, na.last=TRUE, ties.method=c("average", "first", "last", "random", "max", "min"), ...)
 \S4method{xtfrm}{Genome_intervals}(x)
 
 }
