@@ -81,7 +81,7 @@
         \code{na.last} is ignored for \code{\linkS4class{Genome_intervals}} objects.
     }
     \item{}{
-      \code{rank(x, na.last=TRUE, ties.method=c("average", "first", "random", "max", "min"))}:
+      \code{rank(x, na.last=TRUE, ties.method=c("average", "first", "last", random", "max", "min"), ...)}:
       Return the sample ranks of the (stranded) genome intervals in \code{x}.
       See \code{\link[base]{rank}} in the base package for more details.
     }
