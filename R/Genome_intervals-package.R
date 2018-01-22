@@ -23,7 +23,7 @@
 ##' @importMethodsFrom S4Vectors "elementMetadata<-" Rle
 #### S3 Methods
 ##' @importFrom GenomicRanges GRanges GRangesList
-##' @importFrom IRanges IRanges RangesList SplitDataFrameList
+##' @importFrom IRanges IRanges IRangesList SplitDataFrameList
 ##' @importFrom S4Vectors DataFrame
 #### EXPORT
 #### Classes

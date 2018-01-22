@@ -66,7 +66,7 @@ setAs(from="Genome_intervals",to="RangedData",def=function(from){
     ranges <- split(ranges, space)
     values <- split(values, space)
   } else {
-    ranges <- RangesList(ranges)
+    ranges <- IRangesList(ranges)
     values <- SplitDataFrameList(values, compress = TRUE)
     names(ranges) <- unique(space)
     names(values) <- names(ranges)
