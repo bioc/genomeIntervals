@@ -32,9 +32,9 @@ randGenint = function(n,l,k){
         m,
         closed = cl,
         annotation = data.frame(
-                seq_name = paste("chr", sample(k, n, replace=TRUE) ),
+                seq_name = factor(paste("chr", sample(k, n, replace=TRUE) )),
                 inter_base = sample( c(FALSE,TRUE), n, replace =TRUE),
-                strand = sample(c("-", "+"), n, replace =TRUE)
+                strand = factor(sample(c("-", "+"), n, replace =TRUE))
         )
     )
 }

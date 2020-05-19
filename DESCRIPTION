@@ -1,6 +1,6 @@
 Package: genomeIntervals
-Version: 1.45.0
-Date: 2017-04-05
+Version: 1.45.1
+Date: 2020-05-18
 Type: Package
 Title: Operations on genomic intervals
 Author: Julien Gagneur <gagneur@genzentrum.lmu.de>, Joern Toedling, Richard Bourgon, Nicolas Delhomme
@@ -35,3 +35,6 @@ Collate:
 			writeGff3.R
 biocViews: DataImport, Infrastructure, Genetics
 LazyLoad: yes
+RoxygenNote: 7.1.0
+Encoding: UTF-8
+

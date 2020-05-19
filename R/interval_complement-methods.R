@@ -23,7 +23,7 @@ setMethod(
                             inter_base = rep( fac.comb[,1]=="TRUE", times = nrows),
                             seq_name = factor(
                                     rep( as.character(fac.comb[,2]), times = nrows),
-                                    level = levels( seqnames(x) )
+                                    levels = levels( seqnames(x) )
                             )
                     )
             )
@@ -48,7 +48,7 @@ setMethod (
                             inter_base = inter_base(gi),
                             strand= factor(
                                     rep(names(s), times = sapply( gi.list,nrow)),
-                                    level = levels( strand(x) )
+                                    levels = levels( strand(x) )
                             )
                     )
             )

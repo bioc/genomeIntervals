@@ -25,6 +25,7 @@
 ##' @importFrom GenomicRanges GRanges GRangesList
 ##' @importFrom IRanges IRanges IRangesList SplitDataFrameList
 ##' @importFrom S4Vectors DataFrame
+##' @importFrom utils write.table
 #### EXPORT
 #### Classes
 ##' @exportClass Genome_intervals Genome_intervals_stranded
