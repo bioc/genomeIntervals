@@ -1,9 +1,16 @@
+CHANGES IN VERSION 1.44.2
+--------------------------
+
+  o Updated the maintainer email address
+  
+  o Cleared the imports
+
 CHANGES IN VERSION 1.44.1
 --------------------------
 
-o Updated the vignette (data.frame() default is not a factor anymore for character vectors in R4)
+  o Updated the vignette (data.frame() default is not a factor anymore for character vectors in R4)
 
-o Removed the defunct RangedData usage
+  o Removed the defunct RangedData usage
 
 CHANGES IN VERSION 1.31.1
 --------------------------

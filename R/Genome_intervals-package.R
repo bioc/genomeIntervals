@@ -12,19 +12,16 @@
 ##' @importClassesFrom intervals Intervals_virtual Intervals_virtual_or_numeric
 ##'  Intervals_full
 #### S4 Methods
-##' @importMethodsFrom BiocGenerics annotation "annotation<-" Reduce
+##' @importFrom BiocGenerics annotation "annotation<-" Reduce
 ##' strand "strand<-" width
-##' @importMethodsFrom GenomeInfoDb seqnames "seqnames<-"
-##' @importMethodsFrom intervals "[" close_intervals closed "closed<-"
+##' @importFrom GenomeInfoDb seqnames "seqnames<-"
+##' @importFrom GenomicRanges GRanges GRangesList
+##' @importFrom intervals close_intervals closed "closed<-"
 ##' empty head close_intervals open_intervals interval_union interval_complement
 ##' interval_intersection interval_overlap distance_to_nearest which_nearest
 ##' size tail type "type<-"
-##' @importMethodsFrom IRanges "universe<-"
-##' @importMethodsFrom S4Vectors "elementMetadata<-" Rle
-#### S3 Methods
-##' @importFrom GenomicRanges GRanges GRangesList
 ##' @importFrom IRanges IRanges IRangesList SplitDataFrameList
-##' @importFrom S4Vectors DataFrame
+##' @importFrom S4Vectors DataFrame "elementMetadata<-" Rle
 ##' @importFrom utils write.table
 #### EXPORT
 #### Classes
