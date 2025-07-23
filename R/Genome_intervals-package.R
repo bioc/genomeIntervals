@@ -1,5 +1,5 @@
 ### To update the DESCRIPTION
-# installed.packages()[c("GenomeInfoDb","GenomicRanges","IRanges","S4Vectors"),"Version"]
+# installed.packages()[c("Seqinfo","GenomicRanges","IRanges","S4Vectors"),"Version"]
 ### To update the man and NAMESPACE
 # roxygenize(".",roclets=c('rd', 'collate', 'namespace'),clean=TRUE)
 ###==========================
@@ -14,7 +14,7 @@
 #### S4 Methods
 ##' @importFrom BiocGenerics annotation "annotation<-" Reduce
 ##' strand "strand<-" width
-##' @importFrom GenomeInfoDb seqnames "seqnames<-"
+##' @importFrom Seqinfo seqnames "seqnames<-"
 ##' @importFrom GenomicRanges GRanges GRangesList
 ##' @importFrom intervals close_intervals closed "closed<-"
 ##' empty head close_intervals open_intervals interval_union interval_complement

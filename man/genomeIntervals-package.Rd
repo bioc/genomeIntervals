@@ -20,7 +20,7 @@ Tools for operation on genomic intervals.
 	Date: \tab 2015-07-15\cr
 	Type: \tab Package\cr
 	Depends: \tab R (>= 2.15.0), intervals (>= 0.14.0), BiocGenerics, methods\cr
-  Imports: \tab GenomeInfoDb (>= 1.5.8)\cr
+	Imports: \tab Seqinfo\cr
 	Suggests: \tab \cr
 	License: \tab Artistic 2.0\cr
 	BiocViews: \tab DataImport, Infrastructure, Genetics\cr
